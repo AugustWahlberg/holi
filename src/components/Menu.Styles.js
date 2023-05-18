@@ -22,6 +22,9 @@ export const NavList = styled.ul`
   list-style: none;
   margin: 0 auto;
   padding: 0px;
+
+  border-bottom: 1px solid #AFDBD0; 
+  
 `;
 
 export const LinkContainer = styled.div`
@@ -31,9 +34,7 @@ export const LinkContainer = styled.div`
   padding: 8px 0;
   cursor: pointer;
   padding-left: 40px;
-  border-top: 1px solid #AFDBD0; 
-  border-bottom: 1px solid #AFDBD0;
-  margin-bottom -1px;
+  border-top: 1px solid #AFDBD0;
   text-decoration: none;
 
   &:hover {
@@ -54,7 +55,7 @@ export const NavLink = styled.a`
   cursor: pointer;
   padding: 0 15px;
   display: flex;
-  font-size: 22px;
+  font-size: 20px;
   color: #AFDBD0; 
 `;
 
@@ -64,10 +65,10 @@ display: flex;
 align-items: center;
 padding: 10px;
 justify-content: center;
-margin-top:40px;
+margin-top:20px;
 
 img {
-  max-width: 200px;
+  max-width: 140px;
   height: auto;
 }
 `;
@@ -80,7 +81,7 @@ export const AvatarContainer = styled.div`
   justify-content: center;
 
   img {
-    max-width: 200px;
+    max-width: 160px;
     height: auto;
     border-radius: 100px;
     border: 2px solid #ffffff; 
@@ -100,7 +101,7 @@ export const Close = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  font-size: 32px;
+  font-size: 24px;
   color: rgba(189, 18, 31, 0.8);
   cursor: pointer;
   background-color: white;
@@ -130,3 +131,23 @@ export const HamburgerButton = styled.button`
     color: rgba(175, 219, 208, 1);
   }
 `;
+
+
+export const logOut = styled.button`
+width: 50%;
+padding: 10px 20px;
+background: rgba(189, 18, 31, 0.55);
+border-radius: 5px;
+border: none;
+color: rgba(255, 255, 255, 0.7);
+margin: 20px auto;
+display: flex;
+justify-content: center;
+
+&:hover {
+  color: rgba(255, 255, 255, 1);
+  background: rgba(189, 18, 31, 0.8);
+  cursor: pointer;
+
+}
+`

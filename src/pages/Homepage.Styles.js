@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { TiTick as CheckIcon } from "react-icons/ti";
-
+import { TbCheck as CheckIcon } from "react-icons/tb";
 export const HomeContainer = styled.div`
   display: flex;
   width: 100vw;
@@ -24,7 +23,7 @@ export const LeftSide = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.2;
+    opacity: 0.05;
     top: 0;
     left: 0;
     bottom: 0;
@@ -39,8 +38,8 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  max-width: 60%;
-  max-height: 60%; 
+  max-width: 40%;
+  max-height: 40%; 
   object-fit: contain;
 `;
 
@@ -67,9 +66,11 @@ export const ToggleButton = styled.button`
   color: ${props => props.isSelected ? '#fff' : 'inherit'};
   cursor: pointer;
   font-size: 20px;
+  font-weight: 500;
   padding: 20px;
   margin-bottom: 0;
   width:180px;
+  letter-spacing: 0.1em;
 `;
 
 export const Form = styled.form`
@@ -98,7 +99,7 @@ export const SubmitButton = styled.button`
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #003144;
+  background: linear-gradient(135deg, #F16FBE, #003144);
   color: #fff;
   cursor: pointer;
   font-size: 16px;
@@ -132,15 +133,12 @@ export const RoleLabel = styled.label`
   transition: background 0.2s, border 0.2s;
   margin-right: 8px;
   margin-left: 8px;
+  color: #003144;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
   width: 120px; // Add width to ensure same size for both buttons;
   border: 3px solid rgba(0, 153, 162, 0.35); 
-
-  background: ${props => props.isSelected ? 'rgba(0, 153, 162, 0.35)' : '#fff'};
-  border-color: ${props => props.isSelected ? 'rgba(0, 153, 162, 1)' : '#ccc'};
-
-  &:hover {
-    background: ${props => props.isSelected ? 'rgba(0, 153, 162, 0.35)' : '#f0f0f0'};
-  }
+  border-color: ${props => props.isSelected ? '#003144' : '#ccc'};
 `;
 
 export const RoleInput = styled.input`
@@ -152,8 +150,8 @@ export const RoleInput = styled.input`
 export const CheckMark = styled(CheckIcon)`
   display: ${props => props.isSelected ? 'block' : 'none'};
   position: absolute;
-  top: -5px;
-  right: -5px;
-  color: rgba(0, 153, 162, 1);
+  top: -4px;
+  right: -2px;
+  color: #003144;
   font-size: 28px;
 `;

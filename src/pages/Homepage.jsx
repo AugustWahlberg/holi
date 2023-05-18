@@ -14,7 +14,7 @@ function Homepage() {
   };
 
   return (
-    <S.HomeContainer>
+    <S.HomeContainer className="montserrat">
       <S.LeftSide backgroundImage={backgroundImage}>
         <S.LogoContainer>
           <S.LogoImage src={logoSlogan} alt="Logo with slogan" />

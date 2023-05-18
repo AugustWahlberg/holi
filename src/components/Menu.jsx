@@ -45,7 +45,7 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
   };
 
   return (
-    <S.Nav menuOpen={menuOpen}>
+    <S.Nav className="montserrat" menuOpen={menuOpen}>
       {menuOpen ? (
         <>
           <S.NavList menuOpen={menuOpen}>
@@ -65,6 +65,7 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
             <CustomLink href="/myVenues">Book</CustomLink>
             <CustomLink href="/myProfile">Portfolio</CustomLink>
           </S.NavList>
+          <S.logOut>Log out</S.logOut>
         </>
       ) : (
         <S.HamburgerButton as={HiDotsHorizontal} onClick={toggleMenu} />
