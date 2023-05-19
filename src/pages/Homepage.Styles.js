@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import { TbCheck as CheckIcon } from "react-icons/tb";
+
 export const HomeContainer = styled.div`
   display: flex;
   width: 100vw;
@@ -29,7 +30,6 @@ export const LeftSide = styled.div`
     bottom: 0;
     right: 0;
     position: absolute;
-
   }
 `;
 
@@ -39,10 +39,9 @@ export const LogoContainer = styled.div`
 
 export const LogoImage = styled.img`
   max-width: 40%;
-  max-height: 40%; 
+  max-height: 40%;
   object-fit: contain;
 `;
-
 
 export const RightSide = styled.div`
   display: flex;
@@ -93,6 +92,7 @@ export const Input = styled.input`
   border: 1px solid rgba(0, 153, 162, 0.35);
   width:100%;
   color: #2D2F2F;
+  font-size: 14px;
 `;
 
 export const SubmitButton = styled.button`
@@ -107,7 +107,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const VisitLink = styled(Link)`
-  display: flex; // Add this to enable justify-content
+  display: flex;
   justify-content: center;
   color: #003144;
   margin-top: 20px;
@@ -155,3 +155,14 @@ export const CheckMark = styled(CheckIcon)`
   color: #003144;
   font-size: 28px;
 `;
+
+export const ErrorMessage = styled.div`
+  color: #BD121F;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+`;
+
