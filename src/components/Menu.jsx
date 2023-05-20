@@ -62,7 +62,7 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
 
   const isAuth = !!localStorage.getItem("accessToken");
   const role = localStorage.getItem("role") || "";
-  const username = localStorage.getItem("username") || "Visitor";
+  const username = localStorage.getItem("username") || "chillGuest";
 
   const managerLinks = [
     { href: "/createVenue", label: "Create Venue" },

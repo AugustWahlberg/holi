@@ -40,6 +40,12 @@ export const LinkContainer = styled.div`
   &:hover {
     background-color: rgba(175, 219, 208, 0.16);
   }
+
+  &.active {
+    background: rgba(65, 113, 120, 0.3);
+  }
+
+  
 `;
 
 
