@@ -6,6 +6,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import "./App.css";
 import MyVenues from "./pages/MyVenues";
+import Explore from './pages/Explore';
+import MyBookings from './pages/MyBookings';
 
 function App() {
   const location = useLocation();
@@ -26,6 +28,9 @@ function App() {
               <Route path="/createVenue" element={<CreateVenue />} />
               <Route path="/myVenues" element={<MyVenues />} />
               <Route path="/myProfile" element={<MyProfile />} />
+              <Route path="/explore" element={<Explore />} /> 
+              <Route path="/myBookings" element={<MyBookings />} />
+
             </Routes>
           </Suspense>
         </Layout>
