@@ -158,11 +158,28 @@ export const CheckMark = styled(CheckIcon)`
 
 export const ErrorMessage = styled.div`
   color: #BD121F;
-  margin-top: -10px;
+  margin-top: -7px;
   margin-bottom: 10px;
   font-size: 13px;
   text-align: left;
   display: inline-block;
   width: 100%;
 `;
+
+export const SuccessMessage = styled.p`
+  color: green;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+export const Feedback = styled.div`
+  text-align: center;
+  background-color: #003144;
+  color: #F16FBE;
+  border-radius:5px;
+  margin: 5px;
+  padding: 8px;
+  font-size: 13px;
+`;
+
 
