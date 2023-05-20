@@ -15,6 +15,13 @@ export const Nav = styled.nav`
   transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-276px)'};
   width: ${props => props.menuOpen ? '260px' : '20px'};
   transition: transform 0.3s ease-out;
+
+  @media (max-width: 500px) {
+    position: absolute;
+    height: 100vh;
+    width: ${props => props.menuOpen ? '100%' : '40px'};
+    transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-calc(100% - 40px))'};
+  }
 `;
 
 
@@ -129,9 +136,7 @@ export const HamburgerButton = styled.button`
   background-color: #003144;
   padding-bottom: calc(100vh - 50px);
   display: flex;
-  
   color: rgba(175, 219, 208, 0.8);
-  
 
   &:hover {
     color: rgba(175, 219, 208, 1);
