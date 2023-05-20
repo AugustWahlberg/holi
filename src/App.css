@@ -13,3 +13,6 @@ input, label, p {
     font-family: 'Roboto', sans-serif;
 }
 
+.hidden {
+    display: none;
+}
