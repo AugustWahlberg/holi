@@ -7,25 +7,41 @@ import { Link, NavLink } from "react-router-dom";
 import { IoIosCloseCircle } from "react-icons/io";
 import { HiDotsHorizontal } from "react-icons/hi";
 
-import { TbCirclePlus, TbCards, TbUserCircle } from "react-icons/tb";
+import { TbCirclePlus, TbCards, TbUserCircle, TbViewfinder, TbTicket, TbLogin } from "react-icons/tb";
 import logo from "../images/logo.png";
 import avatar from "../images/example-avatar.jpg"
 
 export function CustomLink({ href, children, ...props }) {
 
   const icon =
-    href === "/createVenue" ? (
-      <S.Icon as={TbCirclePlus} />
-    ) : href === "/myProfile" ? (
-      <S.Icon as={TbUserCircle} />
-    ) : href === "/myVenues" ? (
-      <S.Icon as={TbCards} />
-    ) : (
-      <S.Icon as={BsInfoSquareFill} />
-    );
+  href === "/createVenue"
+    ? <S.Icon as={TbCirclePlus} />
+    : href === "/myProfile"
+    ? <S.Icon as={TbUserCircle} />
+    : href === "/myVenues"
+    ? <S.Icon as={TbCards} />
+    : href === "/explore"
+    ? <S.Icon as={TbViewfinder} />
+    : href === "/myBookings"
+    ? <S.Icon as={TbTicket} />
+    : href === "/"
+    ? <S.Icon as={TbLogin} /> 
+    : null;
 
   const label =
-    href === "/createVenue" ? "Create Venue" : href === "/myProfile" ? "My Profile" : href === "/myVenues" ? "My Venues" : "/";
+  href === "/myBookings"
+    ? "My Bookings"
+    : href === "/explore"
+    ? "Explore"
+    : href === "/createVenue"
+    ? "Create Venue"
+    : href === "/myProfile"
+    ? "My Profile"
+    : href === "/myVenues"
+    ? "My Venues"
+    : href === "/"
+    ? "Login"
+    : null;
 
   return (
     <header>
@@ -44,6 +60,41 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
     setMenuOpen(!menuOpen);
   };
 
+  const isAuth = !!localStorage.getItem("accessToken");
+  const role = localStorage.getItem("role") || "";
+  const username = localStorage.getItem("username") || "Visitor";
+
+  const managerLinks = [
+    { href: "/createVenue", label: "Create Venue" },
+    { href: "/myVenues", label: "My Venues" },
+    { href: "/myProfile", label: "My Profile" },
+  
+  ];
+
+  const clientLinks = [
+    { href: "/explore", label: "Explore" },
+    { href: "/myBookings", label: "My Bookings" },
+    { href: "/myProfile", label: "My Profile" },
+   
+  ];
+
+  const guestLinks = [
+    { href: "/explore", label: "Explore" },
+    { href: "/", label: "Register & Login" },
+  ];
+
+  const links = isAuth
+    ? role === "manager"
+      ? managerLinks
+      : clientLinks
+    : guestLinks;
+
+  // Add a logout function
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  };
+
   return (
     <S.Nav className="montserrat" menuOpen={menuOpen}>
       {menuOpen ? (
@@ -53,24 +104,25 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
               <S.CloseButton as={IoIosCloseCircle} onClick={toggleMenu} />
             </S.Close>
             <Link as={Link} to="/">
-  <S.LogoContainer>
-    <img src={logo} alt="Logo" />
-  </S.LogoContainer>
-</Link>
+              <S.LogoContainer>
+                <img src={logo} alt="Logo" />
+              </S.LogoContainer>
+            </Link>
             <S.AvatarContainer>
               <img src={avatar} alt="Logo" />
-              <S.Username>@Username</S.Username>
+              <S.Username>@{username}</S.Username>
             </S.AvatarContainer>
-            <CustomLink href="/createVenue">Services</CustomLink>
-            <CustomLink href="/myVenues">Book</CustomLink>
-            <CustomLink href="/myProfile">Portfolio</CustomLink>
+            {links.map(link => (
+              <CustomLink key={link.href} href={link.href}>
+                {link.label}
+              </CustomLink>
+            ))}
           </S.NavList>
-          <S.logOut>Log out</S.logOut>
+          {isAuth && <S.logOut onClick={handleLogout}>Log out</S.logOut>}
         </>
       ) : (
         <S.HamburgerButton as={HiDotsHorizontal} onClick={toggleMenu} />
       )}
     </S.Nav>
   );
-
 });
