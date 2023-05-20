@@ -1,15 +1,17 @@
 import React from "react";
 
+import * as S from "./CreateVenue.Styles";
+
 
 function MyVenues() {
 
   return (
-  <div>
-    My Venues
-
-  </div>
- 
-  );
+    <S.Container>
+      My Venues
+  
+    </S.Container>
+   
+    );
 }
 
 export default MyVenues;

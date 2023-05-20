@@ -1,15 +1,17 @@
 import React from "react";
 
+import * as S from "./CreateVenue.Styles";
+
 
 function MyProfile() {
 
   return (
-  <div>
-   My profile
-
-  </div>
- 
-  );
+    <S.Container>
+      My Profile
+  
+    </S.Container>
+   
+    );
 }
 
 export default MyProfile;
