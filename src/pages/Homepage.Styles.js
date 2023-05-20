@@ -6,6 +6,10 @@ export const HomeContainer = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
+
+  @media (max-width: 820px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const LeftSide = styled.div`
@@ -17,6 +21,10 @@ export const LeftSide = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 820px) {
+    width: 100%;
+  }
   
   &::after {
     content: "";
@@ -50,6 +58,11 @@ export const RightSide = styled.div`
   align-items: center;
   width: 50%;
   background: #fff;
+
+  @media (max-width: 820px) {
+    width: 100%;
+    min-height: 70vh;
+  }
 `;
 
 export const Toggle = styled.div`
