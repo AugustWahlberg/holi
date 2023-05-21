@@ -8,8 +8,7 @@ export const Nav = styled.nav`
   top: 0px;
   background: #003144;
   border: 0px solid #ef9bce;
-  height: 100vh;
-  min-height: 800px;
+  min-height: 100vh;
   color: #afdbd0;
   z-index: 10;
   transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-276px)'};
