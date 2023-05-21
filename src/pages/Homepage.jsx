@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import * as S from './Homepage.Styles';
 import backgroundImage from '../images/hp-background.png';
 import logoSlogan from '../images/logo-w-slogan.png';
 import axios from 'axios';
-import FormRole from '../components/FormRole';
-import FormInput from '../components/FormInput';
-import FormSubmitButton from '../components/FormSubmit';
+import LoginRegisterForm from '../components/LoginRegisterForm';
 
 function Homepage() {
   const API_BASE_URL = 'https://api.noroff.dev/api/v1';
@@ -109,13 +106,6 @@ function Homepage() {
     }
   };
 
-  const isNoroffEmail = (value) => {
-    return value.endsWith('stud.noroff.no');
-  };
-
-  const isPasswordMatch = (value) => {
-    return value === watch('password');
-  };
 
   const switchToLogin = () => {
     reset();
@@ -134,92 +124,24 @@ function Homepage() {
   };
 
   return (
-    <S.HomeContainer className="montserrat">
-      <S.LeftSide backgroundImage={backgroundImage}>
-        <S.LogoContainer>
-          <S.LogoImage src={logoSlogan} alt="Logo with slogan" />
-        </S.LogoContainer>
-      </S.LeftSide>
-
-      <S.RightSide>
-        <S.Toggle>
-          <S.ToggleButton isSelected={isLogin} onClick={switchToLogin}>
-            Login
-          </S.ToggleButton>
-          <S.ToggleButton isSelected={!isLogin} onClick={switchToRegister}>
-            Register
-          </S.ToggleButton>
-        </S.Toggle>
-
-        <S.Form onSubmit={handleSubmit(onSubmit)}>
-          {!isLogin && (
-            <FormRole role={role} setRole={setRole} register={register} />
-          )}
-          {!isLogin && (
-            <FormInput 
-              register={register}
-              name='username'
-              placeholder='Username'
-              rules={{ 
-                required: true, 
-                maxLength: { 
-                  value: 20, 
-                  message: 'Username cannot be more than 20 characters' 
-                },
-                pattern: {
-                  value: /^[a-zA-Z0-9_]+$/, 
-                  message: 'Username can only contain alphanumeric characters and underscores'
-                },
-              }}
-              errors={errors.username}
-            />
-          )}
-          <FormInput 
-            register={register}
-            name='email'
-            placeholder='Email'
-            rules={{ 
-              required: 'Email is required', 
-              validate: value => isNoroffEmail(value) || 'Email has to be a @stud.noroff.no' 
-            }}
-            errors={errors.email}
-          />
-          <FormInput 
-            register={register}
-            name='password'
-            placeholder='Password'
-            type='password'
-            rules={{ 
-              required: 'Password is required', 
-              minLength: { 
-                value: 8, 
-                message: 'Password should be at least 8 characters' 
-              }
-            }}
-            errors={errors.password}
-          />
-          {!isLogin && (
-            <FormInput 
-              register={register}
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              type='password'
-              rules={{ 
-                required: 'Confirm Password is required', 
-                validate: value => isPasswordMatch(value) || 'Passwords do not match' 
-              }}
-              errors={errors.confirmPassword}
-            />
-          )}
-          <FormSubmitButton isLogin={isLogin} />
-          <S.Feedback ref={feedbackReg} className="hidden"></S.Feedback>
-          <S.Feedback ref={feedbackLogin} className="hidden"></S.Feedback>
-        </S.Form>
-
-        <S.VisitLink to="/explore">Visit website</S.VisitLink>
-      </S.RightSide>
-    </S.HomeContainer>
+    <LoginRegisterForm
+    isLogin={isLogin}
+    role={role}
+    setRole={setRole}
+    register={register}
+    handleSubmit={handleSubmit}
+    onSubmit={onSubmit}
+    errors={errors}
+    watch={watch}
+    backgroundImage={backgroundImage}
+    logoSlogan={logoSlogan}
+    switchToLogin={switchToLogin}
+    switchToRegister={switchToRegister}
+    feedbackReg={feedbackReg}
+    feedbackLogin={feedbackLogin}
+  />
   );
+  
 }
 
 export default Homepage;
