@@ -3,33 +3,33 @@ import { TbSettings } from "react-icons/tb";
 
 export const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
-
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #E9F2F7;
+  min-height: 100vh;
 `;
 
 export const ProfileCard = styled.div`
   margin-top: 20px;
   width: 400px;
   background-color: #ffffff;
-  position: relative;
 `;
 
 export const Header = styled.h1`
-  font-size: 28px;
+  font-size: 22px;
   color: #fff;
   background-color: rgba(0, 49, 68, 0.8);
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   margin: 0;
   position: relative;
 `;
 
 export const SettingsIcon = styled(TbSettings)`
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 10px;
+  font-size: 26px;
 `;
 
 export const ProfileBody = styled.div`
@@ -81,3 +81,62 @@ export const BoldText = styled.span`
 `;
 
 export const RegularText = styled.span``;
+
+
+export const AvatarUpdateDiv = styled.div`
+  background-color: #fff;
+  padding: 15px;
+  color: #F16FBE;
+  border-radius: 5px;
+  width: 220px;
+  margin: 10px auto;
+  margin-top:-30px;
+`;
+
+export const AvatarInputField = styled.input`
+  width: 90%;
+  padding: 10px;
+  border: 1px solid rgba(0, 153, 162, 0.35);
+  color: #000;
+`;
+
+export const UpdateBtn = styled.button`
+  margin-top: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgba(0, 49, 68, 0.9);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100px;
+  &:hover {
+    background-color: rgba(0, 49, 68, 1);
+  }
+`;
+
+export const CancelBtn = styled.button`
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 12px;
+  padding: 10px;
+  width: 100px;
+  background-color: rgba(132, 27, 42, 0.9);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(132, 27, 42, 1);
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+  color: #F16FBE;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 13px;
+`;
