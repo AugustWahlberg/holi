@@ -66,6 +66,7 @@ function MyProfile() {
       setError(null);
       setNewAvatarUrl('');
       setIsEditingAvatar(false);
+      window.location.reload();
 
     } catch (err) {
       console.log(err);
@@ -83,7 +84,7 @@ function MyProfile() {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
 
   return (
