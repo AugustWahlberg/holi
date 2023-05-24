@@ -1,8 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./Menu.Styles";
-import { BsBookmarkDashFill, BsInfoSquareFill } from "react-icons/bs";
-import { IoBrowsers } from "react-icons/io5";
-import { MdWork } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import { IoIosCloseCircle } from "react-icons/io";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -43,19 +40,22 @@ export function CustomLink({ href, children, ...props }) {
     ? "Login"
     : null;
 
-  return (
-    <header>
-      <S.LinkContainer as={NavLink} to={href} activeClassName="active"  {...props}>
-        {icon}
-        <S.NavLink>
-          {label}
-        </S.NavLink>
-      </S.LinkContainer>
-    </header>
-  );
-}
+    return (
+      <header>
+        <S.LinkContainer as={NavLink} to={href}   {...props}>
+          {icon}
+          <S.NavLink>
+            {label}
+          </S.NavLink>
+        </S.LinkContainer>
+      </header>
+    );
+  }
 
 export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
+  const [avatarURL, setAvatarURL] = useState(localStorage.getItem('avatar') || avatar);
+
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -68,14 +68,12 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
     { href: "/createVenue", label: "Create Venue" },
     { href: "/myVenues", label: "My Venues" },
     { href: "/myProfile", label: "My Profile" },
-  
   ];
 
   const clientLinks = [
     { href: "/explore", label: "Explore" },
     { href: "/myBookings", label: "My Bookings" },
     { href: "/myProfile", label: "My Profile" },
-   
   ];
 
   const guestLinks = [
@@ -95,6 +93,35 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
     window.location.href = '/';
   };
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem("accessToken");
+
+      if (!token) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${username}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Error while fetching profile");
+        }
+
+        const userProfile = await response.json();
+        setAvatarURL(userProfile.avatar || avatar); // Default avatar set here
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserProfile();
+  }, [username]);
+
   return (
     <S.Nav className="montserrat" menuOpen={menuOpen}>
       {menuOpen ? (
@@ -109,7 +136,7 @@ export const Menu = React.memo(function Menu({ menuOpen, setMenuOpen }) {
               </S.LogoContainer>
             </Link>
             <S.AvatarContainer>
-              <img src={avatar} alt="Logo" />
+              <img src={avatarURL} alt="Avatar" />
               <S.Username>@{username}</S.Username>
             </S.AvatarContainer>
             {links.map(link => (

@@ -62,7 +62,7 @@ export const Icon = styled.div`
   color: #AFDBD0; 
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled.span`
   text-decoration: none;
   cursor: pointer;
   padding: 0 15px;
@@ -70,7 +70,6 @@ export const NavLink = styled.a`
   font-size: 20px;
   color: #AFDBD0; 
 `;
-
 
 export const LogoContainer = styled.div`
 display: flex;
@@ -94,7 +93,8 @@ export const AvatarContainer = styled.div`
 
   img {
     max-width: 160px;
-    height: auto;
+    height: 160px;
+    object-fit: cover;
     border-radius: 100px;
     border: 2px solid #ffffff; 
   }
