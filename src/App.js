@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
+
 import CreateVenue from "./pages/CreateVenue";
 import HomePage from "./pages/Homepage";
 import MyProfile from "./pages/MyProfile";
@@ -10,6 +11,8 @@ import Explore from './pages/Explore';
 import MyBookings from './pages/MyBookings';
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(true);
+
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
@@ -22,15 +25,14 @@ function App() {
           </Routes>
         </Suspense>
       ) : (
-        <Layout>
+        <Layout menuOpen={menuOpen} setMenuOpen={setMenuOpen}> {/* pass state as props */}
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/createVenue" element={<CreateVenue />} />
               <Route path="/myVenues" element={<MyVenues />} />
-              <Route path="/myProfile" element={<MyProfile />} />
-              <Route path="/explore" element={<Explore />} /> 
-              <Route path="/myBookings" element={<MyBookings />} />
-
+              <Route path="/myProfile" element={<MyProfile menuOpen={menuOpen} />} />
+              <Route path="/explore" element={<Explore menuOpen={menuOpen} />} /> 
+              <Route path="/myBookings" element={<MyBookings menuOpen={menuOpen} />} />
             </Routes>
           </Suspense>
         </Layout>
@@ -38,6 +40,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

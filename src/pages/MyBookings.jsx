@@ -1,15 +1,15 @@
 import React from "react";
 
-import * as S from "./CreateVenue.Styles";
+import * as S from "./MyBookings.Styles";
 
-
-function MyBookings() {
+function MyBookings({ menuOpen }) { // accept menuOpen prop here
 
   return (
-    <S.Container>
-      My Bookings
-    </S.Container>
-    );
+    <S.Container menuOpen={menuOpen}> 
+    My Bookings
+  </S.Container>
+  );
 }
+
 
 export default MyBookings;

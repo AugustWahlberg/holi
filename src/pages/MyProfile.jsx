@@ -4,7 +4,7 @@ import * as S from "./MyProfile.Styles";
 
 const API_BASE_URL = 'https://api.noroff.dev/api/v1';
 
-function MyProfile() {
+function MyProfile({ menuOpen }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [newAvatarUrl, setNewAvatarUrl] = useState('');
@@ -88,7 +88,7 @@ function MyProfile() {
   }
 
   return (
-    <S.Container>
+    <S.Container menuOpen={menuOpen}>
       <S.ProfileCard>
         <S.Header>
           <S.SettingsIcon />

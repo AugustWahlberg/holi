@@ -3,11 +3,14 @@ import { TbSettings } from "react-icons/tb";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #E9F2F7;
-  min-height: 100vh;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: ${props => props.menuOpen ? '260px' : '0px'};
+  transition: margin-left 0.3s ease-out;
 `;
+
 
 export const ProfileCard = styled.div`
   margin-top: 20px;

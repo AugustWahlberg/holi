@@ -4,24 +4,36 @@ import styled from "styled-components";
 export const Nav = styled.nav`
   background-color: #003144;
   box-sizing: border-box;
+  position:  fixed;
   left: 0px;
   top: 0px;
   background: #003144;
   border: 0px solid #ef9bce;
   min-height: 100vh;
+  max-height: 100vh;
   color: #afdbd0;
   z-index: 10;
-  transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-276px)'};
-  width: ${props => props.menuOpen ? '260px' : '20px'};
+  min-width: ${props => props.menuOpen ? '260px' : '20px'};
+  transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'};
   transition: transform 0.3s ease-out;
+  overflow-y: auto; 
+  
 
   @media (max-width: 500px) {
     position: absolute;
-    height: 100vh;
     width: ${props => props.menuOpen ? '100%' : '40px'};
-    transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-calc(100% - 40px))'};
+  }
+
+  @media (min-height: 600px) {
+    height: 100vh;
+  }
+
+  @media (max-height: 599px) {
+    height: auto;
+    max-height: 100%; /* Allow height to be auto and not exceed viewport */
   }
 `;
+
 
 
 export const NavList = styled.ul`
