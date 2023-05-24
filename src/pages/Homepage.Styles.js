@@ -24,6 +24,7 @@ export const LeftSide = styled.div`
 
   @media (max-width: 820px) {
     width: 100%;
+    height: 120px;
   }
   
   &::after {
@@ -46,9 +47,12 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  max-width: 40%;
-  max-height: 40%;
+  width: 200px;
   object-fit: contain;
+  @media (max-width: 820px) {
+    width: 160px;
+    height: 100px;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -160,14 +164,23 @@ export const RoleInput = styled.input`
   cursor: pointer;
 `;
 
-export const CheckMark = styled(CheckIcon)`
-  display: ${props => props.isSelected ? 'block' : 'none'};
-  position: absolute;
-  top: -4px;
-  right: -2px;
-  color: #003144;
-  font-size: 28px;
-`;
+export const CheckMark = ({ isSelected }) => {
+  return (
+    isSelected && (
+      <CheckIcon
+        style={{
+          position: "absolute",
+          top: "-4px",
+          right: "-2px",
+          color: "#003144",
+          fontSize: "28px",
+          display: isSelected ? 'block' : 'none'
+        }}
+      />
+    )
+  );
+};
+
 
 export const ErrorMessage = styled.div`
   color: #BD121F;
