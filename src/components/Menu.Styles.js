@@ -16,19 +16,16 @@ export const Nav = styled.nav`
   min-width: ${props => props.menuOpen ? '260px' : '20px'};
   transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'};
   transition: transform 0.3s ease-out;
-  overflow-y: auto; 
+  overflow: ${props => props.menuOpen ? 'auto' : '0px'};
   
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     position: absolute;
-    width: ${props => props.menuOpen ? '100%' : '40px'}
-    transform: ${props => props.menuOpen ? 'translateX(-100px)' : 'translateX(0px)'};
+    width: ${props => props.menuOpen ? '100%' : '40px'};
+    transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'};
   }
 
-  @media (max-height: 599px) {
-    height: auto;
-    max-height: 100%; /* Allow height to be auto and not exceed viewport */
-  }
+ 
 `;
 
 
