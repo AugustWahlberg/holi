@@ -86,7 +86,7 @@ const Explore = ({menuOpen}) => {
 
   
                   <S.ButtonWrapper>
-                  <Link to={`/venues/${post.id}`}>
+                  <Link to={`/venue/${post.id}`}>
                   <S.ViewBtn>
                  <span>
                   {" "}
