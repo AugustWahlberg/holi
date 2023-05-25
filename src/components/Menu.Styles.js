@@ -20,9 +20,9 @@ export const Nav = styled.nav`
   
 
   @media (max-width: 600px) {
-    position: absolute;
     width: ${props => props.menuOpen ? '100%' : '40px'};
-    transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'};
+    transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'}; // Updated this
+    background-color: none;
   }
 
  
@@ -57,8 +57,12 @@ export const LinkContainer = styled.div`
     background: rgba(65, 113, 120, 0.3);
   }
 
-  
+  @media (max-width: 600px) {
+    
+    padding-left: 30%; 
+  }
 `;
+
 
 
 export const Icon = styled.div`
@@ -132,19 +136,27 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const HamburgerButton = styled.button`
-  font-size: 44px;
-  height:50px;
-  cursor: pointer;
-  margin: 0 auto;
-  padding-left: 276px;
-  background-color: #003144;
-  padding-bottom: calc(100vh - 50px);
-  display: flex;
-  color: rgba(175, 219, 208, 0.8);
 
-  &:hover {
-    color: rgba(175, 219, 208, 1);
+export const HamburgerButton = styled.button`
+font-size: 44px;
+height:50px;
+cursor: pointer;
+margin: 0 auto;
+padding-left: 276px;
+background-color: #003144;
+padding-bottom: calc(100vh - 50px);
+display: flex;
+color: rgba(175, 219, 208, 0.8);
+  margin: 10px; // Adjust this according to your needs
+  padding-left: 275px;
+  padding-bottom: 0;
+  
+  @media (max-width: 600px) {
+    position: ${props => props.menuOpen ? 'absolute' : 'static'}; // This will position the hamburger button correctly when the menu is closed
+    top: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
+    right: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
+    background-color:#fff;
+    color: #003144;
   }
 `;
 
