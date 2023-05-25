@@ -7,6 +7,7 @@ export const Nav = styled.nav`
   position:  fixed;
   left: 0px;
   top: 0px;
+  background-color: ${props => props.menuOpen ? '#003144' : 'none'};
   background: #003144;
   border: 0px solid #ef9bce;
   min-height: 100vh;
@@ -157,6 +158,7 @@ color: rgba(175, 219, 208, 0.8);
     right: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
     background-color:#fff;
     color: #003144;
+    width: 100%;
   }
 `;
 
@@ -176,6 +178,5 @@ justify-content: center;
   color: rgba(255, 255, 255, 1);
   background: rgba(189, 18, 31, 0.8);
   cursor: pointer;
-
 }
 `
