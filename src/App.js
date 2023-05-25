@@ -9,6 +9,7 @@ import "./App.css";
 import MyVenues from "./pages/MyVenues";
 import Explore from './pages/Explore';
 import MyBookings from './pages/MyBookings';
+import Venue from "./pages/Venue";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -33,7 +34,7 @@ function App() {
               <Route path="/myProfile" element={<MyProfile menuOpen={menuOpen} />} />
               <Route path="/explore" element={<Explore menuOpen={menuOpen} />} /> 
               <Route path="/myBookings" element={<MyBookings menuOpen={menuOpen} />} />
-              <Route path="/venues/:id" element={<MyProfile menuOpen={menuOpen} />} />
+              <Route path="/venue/:id" element={<Venue menuOpen={menuOpen} />} />
             </Routes>
           </Suspense>
         </Layout>
