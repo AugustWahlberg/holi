@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Menu } from "./Menu";
 import * as S from "./Layout.Styles";
 
