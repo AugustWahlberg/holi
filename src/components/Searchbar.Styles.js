@@ -18,5 +18,4 @@ export const SearchInput = styled.input`
   border-radius: 40px;
   color: rgba(255, 255, 255, 0.8);
   border: none;
-  z-index:2;
 `;

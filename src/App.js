@@ -33,6 +33,7 @@ function App() {
               <Route path="/myProfile" element={<MyProfile menuOpen={menuOpen} />} />
               <Route path="/explore" element={<Explore menuOpen={menuOpen} />} /> 
               <Route path="/myBookings" element={<MyBookings menuOpen={menuOpen} />} />
+              <Route path="/venues/:id" element={<MyProfile menuOpen={menuOpen} />} />
             </Routes>
           </Suspense>
         </Layout>

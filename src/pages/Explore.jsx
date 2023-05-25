@@ -3,10 +3,12 @@ import * as S from "./Explore.Styles";
 import { AiFillStar, AiFillEye } from "react-icons/ai";
 import { SearchBar } from "../components/Searchbar";
 import { Link } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
 
 const Explore = ({menuOpen}) => {
     const [posts, setPosts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchPosts(); 
@@ -16,6 +18,7 @@ const Explore = ({menuOpen}) => {
         const data = await fetch("https://api.noroff.dev/api/v1/holidaze/venues");
         const venues = await data.json();
         setPosts(venues);
+        setLoading(false)
     };
 
     const getFilteredPosts = (venues, searchTerm) => {
@@ -30,11 +33,19 @@ const Explore = ({menuOpen}) => {
         setSearchTerm(searchValue);
     };
 
+    if (loading) {
+      return (
+        <S.SpinnerContainer>
+            <BeatLoader color="rgba(0, 49, 68, 0.8)" />
+          </S.SpinnerContainer>
+      );
+  }
+
     return (
       <>
-        <S.StickyWrapper>
+      
         <SearchBar  menuOpen={menuOpen} onSearchTermChange={handleSearch} />
-      </S.StickyWrapper>
+     
 
         <S.Container menuOpen={menuOpen}>
           {filteredPosts.length > 0 ? (
@@ -54,7 +65,7 @@ const Explore = ({menuOpen}) => {
                 <S.ProductImg src={post.media} alt="Logo" />
                 <S.DetailsWrapper>
                  
-                  <S.Details>
+                  <S.PriceRatingsWrapper>
                   <S.PriceDisplay>{post.price} $</S.PriceDisplay>
                   <S.Rating>
                     {post.rating > 0 ? `${post.rating} / 5 ` : `? / 5 `}{" "}
@@ -64,7 +75,7 @@ const Explore = ({menuOpen}) => {
                       </span>{" "}
                     </S.Rating>
                  
-                     </S.Details>
+                     </S.PriceRatingsWrapper>
 
 
                       <S.MaxGuestsWrapper>
@@ -75,15 +86,15 @@ const Explore = ({menuOpen}) => {
 
   
                   <S.ButtonWrapper>
-                    <Link to={`/venues/${post.id}`}>
-                      <S.ViewBtn>
-                        <span>
-                          {" "}
-                          <AiFillEye />
-                        </span>{" "}
-                        See more
-                      </S.ViewBtn>
-                    </Link>
+                  <Link to={`/venues/${post.id}`}>
+                  <S.ViewBtn>
+                 <span>
+                  {" "}
+                  <AiFillEye />
+                  </span>{" "}
+                  See more
+                 </S.ViewBtn>
+                </Link>
                   </S.ButtonWrapper>
                 </S.DetailsWrapper>
               </S.Box>

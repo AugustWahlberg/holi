@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-  margin-top: 60px;
   margin-left: ${props => props.menuOpen ? '260px' : '0px'};
   transition: margin-left 0.3s ease-out;
 `;
@@ -67,14 +66,6 @@ export const StickyWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const Box = styled.div`
-  position: relative;
-  width: 260px;
-  padding: 20px;
-  margin: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index:-1;
-`;
 
 export const ButtonWrapper = styled.div`
   position: absolute;
@@ -134,4 +125,25 @@ export const MaxGuests = styled.p`
   margin: 10px;
   margin-top: 8px;
   font-weight: 200;
+`;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+export const Box = styled.div`
+  position: relative; // Add this line to make position:absolute; work for the child elements
+  width: 260px;
+  min-height:440px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+`;
+
+export const PriceRatingsWrapper = styled.div`
+  position:absolute;
+  bottom:10px;
 `;
