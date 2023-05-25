@@ -21,11 +21,8 @@ export const Nav = styled.nav`
 
   @media (max-width: 500px) {
     position: absolute;
-    width: ${props => props.menuOpen ? '100%' : '40px'};
-  }
-
-  @media (min-height: 600px) {
-    height: 100vh;
+    width: ${props => props.menuOpen ? '100%' : '40px'}
+    transform: ${props => props.menuOpen ? 'translateX(-100px)' : 'translateX(0px)'};
   }
 
   @media (max-height: 599px) {

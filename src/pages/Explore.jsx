@@ -35,35 +35,53 @@ const Explore = ({menuOpen}) => {
         <S.StickyWrapper>
         <SearchBar  menuOpen={menuOpen} onSearchTermChange={handleSearch} />
       </S.StickyWrapper>
-      
+
         <S.Container menuOpen={menuOpen}>
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => 
               <S.Box key={post.id}>
+                 <S.ProductTitle>{post.name}</S.ProductTitle>
+               <S.Location>
+            {(post.location.city !== "unknown" && post.location.country !== "unknown") 
+              ? <>
+                  <S.City>{post.location.city},</S.City> 
+                  <S.Country> {post.location.country}</S.Country>
+                  </>
+                : "Location: unknown"}
+              </S.Location>
+
+               
                 <S.ProductImg src={post.media} alt="Logo" />
-                <S.ProductTitle>{post.name}</S.ProductTitle>
-  
                 <S.DetailsWrapper>
+                 
                   <S.Details>
-                      <S.PriceDisplay>{post.price} $</S.PriceDisplay>
-  
-                    <S.Rating>
-                      {post.name > 0 ? `${post.name} / 5` : `? / 5`}{" "}
+                  <S.PriceDisplay>{post.price} $</S.PriceDisplay>
+                  <S.Rating>
+                    {post.rating > 0 ? `${post.rating} / 5 ` : `? / 5 `}{" "}
                       <span>
                         {" "}
                         <AiFillStar />
                       </span>{" "}
                     </S.Rating>
-                  </S.Details>
+                 
+                     </S.Details>
+
+
+                      <S.MaxGuestsWrapper>
+                    <S.MaxGuests>
+                    {post.maxGuests > 0 ? `Max guests: ${post.maxGuests}` : `Max guests: Not stated`}{" "}
+                  </S.MaxGuests>
+                  </S.MaxGuestsWrapper>
+
   
                   <S.ButtonWrapper>
-                    <Link to={`/product/${post.id}`}>
+                    <Link to={`/venues/${post.id}`}>
                       <S.ViewBtn>
                         <span>
                           {" "}
                           <AiFillEye />
                         </span>{" "}
-                        View Product
+                        See more
                       </S.ViewBtn>
                     </Link>
                   </S.ButtonWrapper>
@@ -71,7 +89,7 @@ const Explore = ({menuOpen}) => {
               </S.Box>
             )
           ) : (
-            <S.NotFound>No results found</S.NotFound>
+            <S.NotFound>Sorry friend, no venues matches your search.  </S.NotFound>
           )}
         </S.Container>
       </>

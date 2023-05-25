@@ -16,7 +16,7 @@ export function SearchBar({ onSearchTermChange }) {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Search..."
+        placeholder="Search for your destination"
       />
     </S.SearchElement>
   );
