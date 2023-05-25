@@ -47,9 +47,10 @@ export const DetailsWrapper = styled.div`
 `;
 
 export const NotFound = styled.div`
-  margin-top: 80px;
-  background-color:rgba(0, 49, 68, 0.1);
+  margin-top: 40px;
   padding:10px;
+  background-color: #003144;
+  color: #F16FBE;
 `;
 
 export const PriceDisplay = styled.p`
@@ -135,12 +136,13 @@ export const SpinnerContainer = styled.div`
 `;
 
 export const Box = styled.div`
-  position: relative; // Add this line to make position:absolute; work for the child elements
+  position: relative;
   width: 260px;
   min-height:440px;
   padding: 20px;
   margin: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 49, 68, 0.1);
 `;
 
 export const PriceRatingsWrapper = styled.div`

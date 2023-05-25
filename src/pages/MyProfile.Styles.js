@@ -16,6 +16,8 @@ export const ProfileCard = styled.div`
   margin-top: 20px;
   width: 400px;
   background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 49, 68, 0.1);
 `;
 
 export const Header = styled.h1`
