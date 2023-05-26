@@ -16,3 +16,10 @@ input, label, p {
 .hidden {
     display: none;
 }
+
+.carousel .thumbs img {
+    height: 40px !important; /* or set to any preferred height */
+    width: 80px !important; /* or set to any preferred height */
+    object-fit: cover; 
+  }
+  

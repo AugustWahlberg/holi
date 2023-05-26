@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { lighten } from 'polished';
 
 export const Container = styled.div`
   display: flex;
@@ -19,7 +18,7 @@ export const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; // Add this line to make the ButtonGroup absolutely positioned within the Box
+  position: relative;
   padding: 20px;
   margin: 20px;
   width: 600px;
@@ -31,6 +30,7 @@ export const Box = styled.div`
 export const TopSide = styled.div`
   width: 100%;
 `;
+
 
 export const BottomSide = styled.div`
   width: 100%;
@@ -51,6 +51,7 @@ export const Price = styled.p`
   margin-bottom: 10px;
   color: #333;
   font-weight: bold;
+  font-size:22px;
 `;
 
 export const Rating = styled.p`
@@ -75,25 +76,20 @@ export const Meta = styled.div`
 `;
 
 export const BackButton = styled.button`
-  position: absolute;
-  top: 20px;
-  left: 20px;
   display: flex;
   align-items: center;
-  background: #007BFF;
   color: #fff;
-  padding: 10px;
+  padding-left:5px;
   border-radius: 5px;
-  border: none;
+  border: 1px solid #003144;
+  color: #003144;
+  background: #fff;
   cursor: pointer;
-
-  svg {
-    margin-right: 5px;
-  }
-
-  &:hover {
-    background: ${lighten(0.1, '#007BFF')};
-  }
+  max-height: 30px;
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 40px;
 `;
 
 export const ButtonGroup = styled.div`
@@ -105,36 +101,24 @@ export const ButtonGroup = styled.div`
 `;
 
 export const BookButton = styled.button`
-  background: #007BFF;
+  background: #003144;
   color: #fff;
   padding: 10px 20px;
+  align-items: center;
   border-radius: 5px;
   border: none;
   cursor: pointer;
 
-  &:hover {
-    background: ${lighten(0.1, '#007BFF')};
-  }
 `;
 
-export const ViewButton = styled.button`
+export const AvailabilityButton = styled.button`
   margin-top: 10px;
-  display: flex;
-  align-items: center;
-  background: #28a745;
-  color: #fff;
+  background-color: #fff;
   padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-
-  svg {
-    margin-right: 5px;
-  }
-
-  &:hover {
-    background: ${lighten(0.1, '#28a745')};
-  }
+  border: 1px solid #003144;
 `;
 
 export const SpinnerContainer = styled.div`
@@ -143,3 +127,4 @@ export const SpinnerContainer = styled.div`
   align-items: center;
   height: 100vh;
 `;
+
