@@ -29,7 +29,5 @@ export const SearchInput = styled.input`
   position: fixed;
   top:20px;
   padding:14px;
-  @media (min-width: 600px) {
-    margin-left: 275px;
-  }
+
 `;
