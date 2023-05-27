@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./Searchbar.Styles";
 
-export function SearchBar({ onSearchTermChange }) {
+export function SearchBar({ onSearchTermChange, menuOpen }) {
   const [query, setQuery] = useState("");
 
   const handleChange = (event) => {
@@ -11,13 +11,13 @@ export function SearchBar({ onSearchTermChange }) {
   };
 
   return (
-    <S.SearchElement>
-      <S.SearchInput
-        type="text"
-        value={query}
-        onChange={handleChange}
-        placeholder="Search destination"
-      />
-    </S.SearchElement>
+    <S.SearchElement menuOpen={menuOpen}>
+    <S.SearchInput
+      type="text"
+      value={query}
+      onChange={handleChange}
+      placeholder="Search destination"
+    />
+  </S.SearchElement>
   );
 }

@@ -6,6 +6,7 @@ import logoSlogan from '../images/logo-w-slogan.png';
 import axios from 'axios';
 import LoginRegisterForm from '../components/LoginRegisterForm';
 
+
 function Homepage() {
   const API_BASE_URL = 'https://api.noroff.dev/api/v1';
   const [isLogin, setIsLogin] = useState(true);

@@ -13,6 +13,7 @@ export const SearchElement = styled.form`
   border-bottom: 1px solid rgba(0, 49, 68, 0.4);
   height: 120px;
   margin-top: -40px;
+  margin-left: ${props => props.menuOpen ? '130px' : '0px'};
 `;
 
 
@@ -29,5 +30,4 @@ export const SearchInput = styled.input`
   position: fixed;
   top:20px;
   padding:14px;
-
 `;

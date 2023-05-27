@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from "react";
-
+import 'react-datepicker/dist/react-datepicker.css';
 import CreateVenue from "./pages/CreateVenue";
 import HomePage from "./pages/Homepage";
 import MyProfile from "./pages/MyProfile";
@@ -29,8 +29,8 @@ function App() {
         <Layout menuOpen={menuOpen} setMenuOpen={setMenuOpen}> {/* pass state as props */}
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-              <Route path="/createVenue" element={<CreateVenue />} />
-              <Route path="/myVenues" element={<MyVenues />} />
+              <Route path="/createVenue" element={<CreateVenue menuOpen={menuOpen}/>} />
+              <Route path="/myVenues" element={<MyVenues menuOpen={menuOpen} />} />
               <Route path="/myProfile" element={<MyProfile menuOpen={menuOpen} />} />
               <Route path="/explore" element={<Explore menuOpen={menuOpen} />} /> 
               <Route path="/myBookings" element={<MyBookings menuOpen={menuOpen} />} />

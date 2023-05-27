@@ -8,7 +8,6 @@ export const Container = styled.div`
   margin-left: ${props => props.menuOpen ? '260px' : '0px'};
   transition: margin-left 0.3s ease-out;
   margin-top: 100px;
-
 `;
 
 export const ProductTitle = styled.h2`
@@ -28,8 +27,6 @@ export const Rating = styled.p`
   }
 `;
 
-
-
 export const ProductImg = styled.img`
  width: 100%;
  height: 300px;
@@ -45,13 +42,6 @@ export const DetailsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-self: center;
-`;
-
-export const NotFound = styled.div`
-  margin-top: 40px;
-  padding:10px;
-  background-color: #003144;
-  color: #F16FBE;
 `;
 
 export const PriceDisplay = styled.p`

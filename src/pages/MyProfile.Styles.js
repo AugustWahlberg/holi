@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 60px;
   margin-left: ${props => props.menuOpen ? '260px' : '0px'};
   transition: margin-left 0.3s ease-out;
 `;
@@ -144,4 +144,15 @@ export const ErrorMessage = styled.p`
   border-radius: 5px;
   margin: 5px;
   font-size: 13px;
+`;
+
+export const Top = styled.div`
+width: 100%;
+display: flex;
+justify-content: center;
+margin: 0 auto;
+position: fixed;
+z-index:1;
+background-color:#fff;
+height: 60px;
 `;

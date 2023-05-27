@@ -1,15 +1,15 @@
 import React from "react";
-
+import * as CS from "./CommunComponents.Styles";
 import * as S from "./CreateVenue.Styles";
 
 
-function MyVenues() {
+function MyVenues({ menuOpen }) {
 
   return (
-    <S.Container>
+    <CS.Container menuOpen={menuOpen}>
       My Venues
   
-    </S.Container>
+    </CS.Container>
    
     );
 }

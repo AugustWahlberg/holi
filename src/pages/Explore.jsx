@@ -4,6 +4,7 @@ import { AiFillStar, AiFillEye } from "react-icons/ai";
 import { SearchBar } from "../components/Searchbar";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
+import * as CS from "./CommunComponents.Styles";
 
 const Explore = ({menuOpen}) => {
     const [posts, setPosts] = useState([]);
@@ -35,16 +36,16 @@ const Explore = ({menuOpen}) => {
 
     if (loading) {
       return (
-        <S.SpinnerContainer>
+        <CS.SpinnerContainer menuOpen={menuOpen}>
             <BeatLoader color="rgba(0, 49, 68, 0.8)" />
-          </S.SpinnerContainer>
+          </CS.SpinnerContainer>
       );
   }
 
     return (
       <>
       
-        <SearchBar  menuOpen={menuOpen} onSearchTermChange={handleSearch} />
+        <SearchBar menuOpen={menuOpen} onSearchTermChange={handleSearch} />
      
 
         <S.Container menuOpen={menuOpen}>
@@ -100,7 +101,7 @@ const Explore = ({menuOpen}) => {
               </S.Box>
             )
           ) : (
-            <S.NotFound>Sorry friend, no venues matches your search.  </S.NotFound>
+            <CS.NotFound>Sorry friend, no venues matches your search.  </CS.NotFound>
           )}
         </S.Container>
       </>

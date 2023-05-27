@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as S from "./MyProfile.Styles";
+import * as CS from "./CommunComponents.Styles";
+import { BeatLoader } from "react-spinners";
 
 const API_BASE_URL = 'https://api.noroff.dev/api/v1';
 
@@ -84,10 +86,16 @@ function MyProfile({ menuOpen }) {
   }
 
   if (loading) {
-    return <p></p>;
-  }
+    return (
+      <CS.SpinnerContainer menuOpen={menuOpen}>
+          <BeatLoader color="rgba(0, 49, 68, 0.8)" />
+        </CS.SpinnerContainer>
+    );
+}
 
   return (
+    <>
+    <S.Top  />
     <S.Container menuOpen={menuOpen}>
       <S.ProfileCard>
         <S.Header>
@@ -129,6 +137,7 @@ function MyProfile({ menuOpen }) {
         </S.InfoDiv>
       </S.ProfileCard>
     </S.Container>
+    </>
   );
 }
 
