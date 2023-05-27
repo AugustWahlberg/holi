@@ -18,7 +18,7 @@ export const Nav = styled.nav`
   overflow: ${props => props.menuOpen ? 'auto' : '0px'};
   
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     width: ${props => props.menuOpen ? '100%' : '40px'};
     transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'}; // Updated this
     background-color: none;
@@ -54,7 +54,7 @@ export const LinkContainer = styled.div`
     background: rgba(65, 113, 120, 0.3);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     
     padding-left: 30%; 
   }
@@ -150,7 +150,7 @@ color: rgba(175, 219, 208, 0.8);
   background-color:#fff;
   color: #003144;
   
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     position: ${props => props.menuOpen ? 'absolute' : 'static'}; // This will position the hamburger button correctly when the menu is closed
     top: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
     right: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open

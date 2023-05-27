@@ -29,7 +29,7 @@ export const Rating = styled.p`
 
 export const ProductImg = styled.img`
  width: 100%;
- height: 300px;
+ height: 280px;
  display: inline-block;
   vertical-align: middle;
   object-fit: cover;
