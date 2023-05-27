@@ -5,15 +5,9 @@ export const SearchElement = styled.form`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  height: 40px;
-  position: fixed;
   z-index:2;
-  background-color:#fff;
   padding: 5px;
-  border-bottom: 1px solid rgba(0, 49, 68, 0.4);
-  height: 120px;
-  margin-top: -40px;
-  margin-left: ${props => props.menuOpen ? '130px' : '0px'};
+  margin: 10px;
 `;
 
 
@@ -27,7 +21,5 @@ export const SearchInput = styled.input`
   border: none;
   padding: 5px;
   width:200px;
-  position: fixed;
-  top:20px;
   padding:14px;
 `;

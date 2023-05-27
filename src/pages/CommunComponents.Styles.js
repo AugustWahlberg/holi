@@ -8,7 +8,9 @@ margin: 0 auto;
 position: fixed;
 z-index:1;
 background-color:#fff;
-height: 60px;
+height: auto;
+margin-left: ${props => props.menuOpen ? '130px' : '0px'};
+min-height: 60px;
 `;
 
 export const SpinnerContainer = styled.div`
@@ -30,7 +32,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 80px;
   margin-left: ${props => props.menuOpen ? '260px' : '0px'};
   transition: margin-left 0.3s ease-out;
   
@@ -46,7 +48,12 @@ export const Header = styled.h2`
   margin: 0 auto
   display: flex;
  text-align: center;
+ margin: 22px;
+ color: #003144;
+ 
 `;
+
+
 
 
 

@@ -104,3 +104,4 @@ export const Info = styled.div`
   }
 `;
 
+

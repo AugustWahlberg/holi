@@ -44,11 +44,14 @@ const Explore = ({menuOpen}) => {
 
     return (
       <>
-      
-        <SearchBar menuOpen={menuOpen} onSearchTermChange={handleSearch} />
+
+<CS.Top menuOpen={menuOpen}>
+<SearchBar menuOpen={menuOpen} onSearchTermChange={handleSearch} />
+    </CS.Top>
+    
      
 
-        <S.Container menuOpen={menuOpen}>
+        <CS.Container menuOpen={menuOpen}>
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => 
               <S.Box key={post.id}>
@@ -103,7 +106,7 @@ const Explore = ({menuOpen}) => {
           ) : (
             <CS.NotFound>Sorry friend, no venues matches your search.  </CS.NotFound>
           )}
-        </S.Container>
+        </CS.Container>
       </>
   );
    

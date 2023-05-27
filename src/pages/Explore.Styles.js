@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  margin-left: ${props => props.menuOpen ? '260px' : '0px'};
-  transition: margin-left 0.3s ease-out;
-  margin-top: 100px;
-`;
-
 export const ProductTitle = styled.h2`
   font-size: 20px;
   margin-top:-5px;

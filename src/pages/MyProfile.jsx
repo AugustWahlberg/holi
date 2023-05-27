@@ -95,8 +95,7 @@ function MyProfile({ menuOpen }) {
 
   return (
     <>
-    <S.Top  />
-    <S.Container menuOpen={menuOpen}>
+    <CS.Container menuOpen={menuOpen}>
       <S.ProfileCard>
         <S.Header>
           <S.SettingsIcon />
@@ -136,7 +135,7 @@ function MyProfile({ menuOpen }) {
           <S.RegularText>Role</S.RegularText>
         </S.InfoDiv>
       </S.ProfileCard>
-    </S.Container>
+    </CS.Container>
     </>
   );
 }

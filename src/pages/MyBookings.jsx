@@ -13,13 +13,14 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
   useEffect(() => {
     
     const fetchData = async () => {
+      const username = localStorage.getItem("username");
       const token = localStorage.getItem("accessToken");
       if (!token) {
         console.log('User not logged in');
         return;
       }
       
-      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/bookings?_venue=true`, {
+      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${username}/bookings/?_venue=true`, {
         headers: {
           Authorization: `Bearer ${token}`
         },
@@ -49,9 +50,13 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
 }
 
   return (
-    <CS.Container menuOpen={menuOpen}>
-      
+    <>
+    <CS.Top menuOpen={menuOpen}>
       <CS.Header>My Bookings</CS.Header>
+    </CS.Top>
+    
+    <CS.Container menuOpen={menuOpen}>
+
       {Array.isArray(bookings) ? (
   bookings.map((booking, index) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -82,10 +87,11 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
     );
   })
 ) : (
-  <p>No bookings found.</p>
+  <CS.NotFound>You have no upcoming bookings  </CS.NotFound>
 )}
 
     </CS.Container>
+    </>
   );
 }
 
