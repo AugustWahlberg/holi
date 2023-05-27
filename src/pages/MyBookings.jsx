@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TbBrowserCheck, TbDoorEnter, TbDoorExit, TbUsers} from "react-icons/tb";
 import { BeatLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 import * as S from "./MyBookings.Styles";
 import * as CS from "./CommunComponents.Styles";
@@ -78,7 +79,9 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
         <S.Info><TbBrowserCheck />{created}</S.Info>
         </S.BookingInfo>
         <S.ButtonsContainer>
-          <S.ViewVenue>View Venue</S.ViewVenue>
+        <Link to={`/venue/${booking.venue.id}`}>
+    <S.ViewVenue>View Venue</S.ViewVenue>
+  </Link>
           <S.EditButton>Edit</S.EditButton>
           <S.DeleteButton>Delete</S.DeleteButton>
         </S.ButtonsContainer>
