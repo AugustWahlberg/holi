@@ -135,6 +135,8 @@ function Venue({menuOpen}) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Booking Modal"
+        menuOpen={menuOpen}
+        
       >
         <S.ModalContent>
           <S.ModalHeader>Create a booking</S.ModalHeader>

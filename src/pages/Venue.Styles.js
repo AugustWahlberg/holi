@@ -87,6 +87,7 @@ export const StyledModal = styled(Modal)`
   padding: 20px;
   outline: none;
   z-index:100;
+  margin-left: ${props => props.menuOpen ? '130px' : '0px'};
 `;
 
 
