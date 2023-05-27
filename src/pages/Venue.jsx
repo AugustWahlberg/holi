@@ -128,17 +128,17 @@ function Venue({menuOpen}) {
         </S.Box>
       </CS.Container>
     
-      <S.StyledModal
+      <CS.StyledModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Booking Modal"
         menuOpen={menuOpen}
         
       >
-        <S.ModalContent>
-          <S.ModalHeader>Create a booking</S.ModalHeader>
-          <S.InputGroup>
-          <S.Input
+        <CS.ModalContent>
+          <CS.ModalHeader>Create a booking</CS.ModalHeader>
+          <CS.ModalInputGroup>
+          <CS.ModalInput
   type="number"
   min="0"
   placeholder="Number of guests"
@@ -146,7 +146,7 @@ function Venue({menuOpen}) {
 />
 
     
-            <S.DatePicker
+            <CS.DatePicker
               selected={startDate}
               onChange={date => setStartDate(date)}
               selectsStart
@@ -157,7 +157,7 @@ function Venue({menuOpen}) {
               locale="en-GB"
             />
     
-            <S.DatePicker
+            <CS.DatePicker
               selected={endDate}
               onChange={date => setEndDate(date)}
               selectsEnd
@@ -168,16 +168,16 @@ function Venue({menuOpen}) {
               dateFormat="yyyy-MM-dd"
               locale="en-GB"
             />
-          </S.InputGroup>
+          </CS.ModalInputGroup>
 
-          <S.Feedback>{message}</S.Feedback>
+          <CS.ModalFeedback>{message}</CS.ModalFeedback>
     
-          <S.ButtonGroup>
-            <S.CloseModal onClick={closeModal}>Close</S.CloseModal>
-            <S.CreateBookingBtn onClick={makeBooking}>Book now</S.CreateBookingBtn>
-          </S.ButtonGroup>
-        </S.ModalContent>
-      </S.StyledModal>
+          <CS.ModalButtonGroup>
+            <CS.CloseModal onClick={closeModal}>Close</CS.CloseModal>
+            <CS.ConfirmModal onClick={makeBooking}>Book now</CS.ConfirmModal>
+          </CS.ModalButtonGroup>
+        </CS.ModalContent>
+      </CS.StyledModal>
       </>
     );
     

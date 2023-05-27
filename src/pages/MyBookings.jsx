@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { TbBrowserCheck, TbDoorEnter, TbDoorExit, TbUsers} from "react-icons/tb";
 import { BeatLoader } from "react-spinners";
-import { Link } from "react-router-dom";
+import { deleteBooking } from "../handlers/DeleteBooking";
 
 import * as S from "./MyBookings.Styles";
 import * as CS from "./CommunComponents.Styles";
@@ -10,9 +11,21 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
   const [bookings, setBookings] = useState([]);
   const [username, setUsername] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+
+  const openModal = (id) => {
+    setIsOpen(true);
+    setDeleteId(id);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setDeleteId(null);
+  };
+
 
   useEffect(() => {
-    
     const fetchData = async () => {
       const username = localStorage.getItem("username");
       const token = localStorage.getItem("accessToken");
@@ -32,7 +45,6 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
       setLoading(false)
     };
     
-
     const user = localStorage.getItem("username");
     if (user) {
       setUsername(user);
@@ -48,7 +60,7 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
           <BeatLoader color="rgba(0, 49, 68, 0.8)" />
         </CS.SpinnerContainer>
     );
-}
+  }
 
   return (
     <>
@@ -60,7 +72,6 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
 
       {Array.isArray(bookings) ? (
   bookings.map((booking, index) => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const dateFrom = new Date(booking.dateFrom).toLocaleDateString();
     const dateTo = new Date(booking.dateTo).toLocaleDateString();
     const created = new Date(booking.created).toLocaleDateString();
@@ -83,17 +94,32 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
     <S.ViewVenue>View Venue</S.ViewVenue>
   </Link>
           <S.EditButton>Edit</S.EditButton>
-          <S.DeleteButton>Delete</S.DeleteButton>
+          <S.DeleteButton onClick={() => openModal(booking.id)}>Delete</S.DeleteButton>
         </S.ButtonsContainer>
       </S.BookingContainer>
     </S.Box>
     );
   })
 ) : (
-  <CS.NotFound>You have no upcoming bookings  </CS.NotFound>
+  <CS.NotFound>You have no upcoming bookings</CS.NotFound>
 )}
-
     </CS.Container>
+    
+    <CS.StyledModal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      contentLabel="Delete Booking Modal"
+      menuOpen={menuOpen}
+    >
+      <CS.ModalContent>
+        <CS.ModalHeader>Delete Booking</CS.ModalHeader>
+        <CS.ModalText>Are you sure you want to delete the booking?</CS.ModalText>
+        <CS.ModalButtonGroup>
+          <CS.CloseModal onClick={closeModal}>Cancel</CS.CloseModal>
+          <CS.ConfirmModal onClick={() => deleteBooking(deleteId, setBookings, bookings, closeModal)}>Delete</CS.ConfirmModal>
+        </CS.ModalButtonGroup>
+      </CS.ModalContent>
+    </CS.StyledModal>
     </>
   );
 }
