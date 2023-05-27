@@ -11,14 +11,15 @@ export const Box = styled.div`
   position: relative;
   padding: 20px;
   margin: 20px;
-  width: 600px;
+  width: 500px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 49, 68, 0.1);
   background: #ffffff;
 
 
-  @media (max-width: 600px) {
-     width: 350px;
+  @media (max-width: 900px) {
+     width: 300px;
+     heigh: 200px;
   }
 `;
 
