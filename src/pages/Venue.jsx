@@ -56,6 +56,12 @@ function Venue({menuOpen}) {
   const [message, setMessage] = useState('');
 
   const makeBooking = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      setMessage("You have to be logged in to book");
+      return;
+    }
+    
     handleBook(startDate, endDate, guests, id).then(response => {
       setMessage(response.message);
       if (response.success) {

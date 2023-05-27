@@ -121,6 +121,11 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   width:50%;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    }
 `;
 
 export const VisitLink = styled(Link)`

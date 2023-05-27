@@ -3,7 +3,6 @@ import * as S from "./Menu.Styles";
 import { Link, NavLink } from "react-router-dom";
 import { IoIosCloseCircle } from "react-icons/io";
 import { HiDotsHorizontal } from "react-icons/hi";
-
 import { TbCirclePlus, TbCards, TbUserCircle, TbViewfinder, TbTicket, TbLogin } from "react-icons/tb";
 import logo from "../images/logo.png";
 import avatar from "../images/example-avatar.jpg"

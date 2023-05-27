@@ -38,6 +38,15 @@ export const Container = styled.div`
     margin-left: 0;
   }
 `;
+export const Header = styled.h2`
+  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom:20px;
+  width: 100%;
+  margin: 0 auto
+  display: flex;
+ text-align: center;
+`;
 
 
 
