@@ -61,13 +61,15 @@ export const Button = styled.button`
 
 
 export const ViewVenue = styled(Button)`
+background-color: #fff;
+color: #003144;
+border: 1px solid #003144;
 
-background: linear-gradient(135deg, #F16FBE, #003144);
-color: #fff;
-opacity: 0.8;
 
 &:hover {
-  opacity: 1;
+
+  border: 2px solid #003144;
+  
   }
  
 `;
@@ -95,7 +97,7 @@ export const Info = styled.div`
   align-items: center;
   font-size: 16px;
   margin: 3px;
-  margin-top: 6px;
+  margin-top: 8px;
   font-weight: 500;
   
   svg {
