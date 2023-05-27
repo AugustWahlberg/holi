@@ -2,13 +2,11 @@ import styled from "styled-components";
 
 
 export const Nav = styled.nav`
-  background-color: #003144;
   box-sizing: border-box;
   position:  fixed;
   left: 0px;
   top: 0px;
   background-color: ${props => props.menuOpen ? '#003144' : 'none'};
-  background: #003144;
   border: 0px solid #ef9bce;
   min-height: 100vh;
   max-height: 100vh;
@@ -25,8 +23,6 @@ export const Nav = styled.nav`
     transform: ${props => props.menuOpen ? 'translateX(0px)' : 'translateX(-275px)'}; // Updated this
     background-color: none;
   }
-
- 
 `;
 
 
@@ -151,13 +147,13 @@ color: rgba(175, 219, 208, 0.8);
   margin: 10px; // Adjust this according to your needs
   padding-left: 275px;
   padding-bottom: 0;
+  background-color:#fff;
+  color: #003144;
   
   @media (max-width: 600px) {
     position: ${props => props.menuOpen ? 'absolute' : 'static'}; // This will position the hamburger button correctly when the menu is closed
     top: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
     right: ${props => props.menuOpen ? '100px' : 'unset'}; // Adjusts the position of the hamburger button when the menu is open
-    background-color:#fff;
-    color: #003144;
     width: 100%;
   }
 `;
