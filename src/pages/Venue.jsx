@@ -7,8 +7,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import { registerLocale } from  "react-datepicker";
+import handleBook from '../api/HandleBook';
 import enGB from 'date-fns/locale/en-GB';
 registerLocale('en-GB', enGB)
+
 
 function Venue({menuOpen}) {
 
@@ -43,34 +45,6 @@ function Venue({menuOpen}) {
     setCurrentImage(index);
   }
 
-  const handleBook = async () => {
-    if (!startDate || !endDate || !guests) {
-      console.error('Please fill all fields.');
-      return;
-    }
-
-    const response = await fetch('https://api.noroff.dev/api/v1/holidaze/bookings', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        dateFrom: startDate.toISOString(),
-        dateTo: endDate.toISOString(),
-        guests: guests,
-        venueId: id,
-      }),
-    });
-
-    if (response.ok) {
-      const bookingData = await response.json();
-      console.log('Booking created successfully:', bookingData);
-      setModalIsOpen(false);  // close the modal after successful booking
-    } else {
-      console.error('Failed to create booking.');
-    }
-  };
-
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -78,6 +52,20 @@ function Venue({menuOpen}) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  const [message, setMessage] = useState('');
+
+  const makeBooking = () => {
+    handleBook(startDate, endDate, guests, id).then(response => {
+      setMessage(response.message);
+      if (response.success) {
+        setTimeout(() => {
+          setModalIsOpen(false);  // close the modal after successful booking
+        }, 2000);
+      }
+    });
+  };
+  
 
   if (!venueData) {
     return (
@@ -111,23 +99,26 @@ function Venue({menuOpen}) {
           </S.TopSide>
     
           <S.BottomSide>
-            <S.Header>{venueData.name}</S.Header>
-            <S.Description>{venueData.description}</S.Description>
-            <S.Price>{venueData.price}$</S.Price>
-            <S.Rating>Rating: {venueData.rating}</S.Rating>
-            <S.MaxGuests>Max guests: {venueData.maxGuests}</S.MaxGuests>
-    
-            <S.Meta>
-              {venueData.meta.wifi && <FaWifi />}
-              {venueData.meta.parking && <FaParking />}
-              {venueData.meta.breakfast && <FaDog />}
-              {venueData.meta.pets && <FaBreadSlice />}
-            </S.Meta>
-          </S.BottomSide>
-    
-          <S.ButtonGroup>
-            <S.BookButton onClick={openModal}>Book Now</S.BookButton>
-          </S.ButtonGroup>
+  <div>
+    <S.Header>{venueData.name}</S.Header>
+    <S.Description>{venueData.description}</S.Description>
+    <S.Rating>Rating: {venueData.rating}</S.Rating>
+    <S.MaxGuests>Max guests: {venueData.maxGuests}</S.MaxGuests>
+
+    <S.Meta>
+      {venueData.meta.wifi && <FaWifi />}
+      {venueData.meta.parking && <FaParking />}
+      {venueData.meta.breakfast && <FaDog />}
+      {venueData.meta.pets && <FaBreadSlice />}
+    </S.Meta>
+  </div>
+  <S.ButtonContainer>
+    <S.Price>{venueData.price}$</S.Price>
+    <S.BookButton onClick={openModal}>Book Now</S.BookButton>
+  </S.ButtonContainer>
+</S.BottomSide>
+
+
         </S.Box>
       </CS.Container>
     
@@ -141,12 +132,13 @@ function Venue({menuOpen}) {
         <S.ModalContent>
           <S.ModalHeader>Create a booking</S.ModalHeader>
           <S.InputGroup>
-            <S.Input
-              type="number"
-              min="0"
-              placeholder="Number of guests"
-              onChange={event => setGuests(event.target.value)}
-            />
+          <S.Input
+  type="number"
+  min="0"
+  placeholder="Number of guests"
+  onChange={event => setGuests(parseInt(event.target.value, 10))}
+/>
+
     
             <S.DatePicker
               selected={startDate}
@@ -171,10 +163,12 @@ function Venue({menuOpen}) {
               locale="en-GB"
             />
           </S.InputGroup>
+
+          <S.Feedback>{message}</S.Feedback>
     
           <S.ButtonGroup>
             <S.CloseModal onClick={closeModal}>Close</S.CloseModal>
-            <S.CreateBookingBtn onClick={handleBook}>Book now</S.CreateBookingBtn>
+            <S.CreateBookingBtn onClick={makeBooking}>Book now</S.CreateBookingBtn>
           </S.ButtonGroup>
         </S.ModalContent>
       </S.StyledModal>

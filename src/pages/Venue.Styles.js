@@ -28,8 +28,12 @@ export const TopSide = styled.div`
 `;
 
 export const BottomSide = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+  height: 100%;
 `;
+
 
 
 export const Meta = styled.div`
@@ -58,6 +62,19 @@ export const BackButton = styled.button`
   z-index: 2;
 `;
 
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end; // Aligns items to the right (end of the container)
+  width: 100%;
+  height: 100%;
+`;
+
+
+
+
 export const BackIcon = styled(TbCircleArrowLeftFilled)`
 align-items: center;
 padding-right: 4px;
@@ -74,6 +91,9 @@ export const BookButton = styled.button`
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  margin-bottom: 10px;
+  width: 100px;
+  
 `;
 
 export const StyledModal = styled(Modal)`
@@ -89,7 +109,6 @@ export const StyledModal = styled(Modal)`
   z-index:100;
   margin-left: ${props => props.menuOpen ? '130px' : '0px'};
 `;
-
 
 export const InputGroup = styled.div`
   margin-bottom: 20px;
@@ -206,6 +225,19 @@ export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const Feedback = styled.div`
+  text-align: center;
+  background-color: #fff;
+  color: #F16FBE;
+  border-radius:5px;
+  margin: 5px;
+  padding: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  width:300px;
 `;
 
 
