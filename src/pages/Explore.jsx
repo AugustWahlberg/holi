@@ -67,7 +67,7 @@ const Explore = ({ menuOpen }) => {
                 )}
               </S.Location>
 
-              <S.ProductImg src={post.media} alt="Logo" />
+              <S.ProductImg src={post.media} alt="Image" />
               <S.DetailsWrapper>
                 <S.PriceRatingsWrapper>
                   <S.PriceDisplay>{post.price} $</S.PriceDisplay>
