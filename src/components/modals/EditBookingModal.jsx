@@ -13,7 +13,7 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
   const updateBooking = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-
+  
       const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/bookings/${booking.id}`, {
         method: "PUT",
         headers: {
@@ -26,7 +26,7 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
           guests,
         }),
       });
-
+  
       if (response.ok) {
         const updatedBooking = {
           ...booking,
@@ -34,21 +34,26 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
           dateTo,
           guests,
         };
-
+  
         const updatedBookings = bookings.map((bookingItem) =>
           bookingItem.id === booking.id ? updatedBooking : bookingItem
         );
-
+  
         setBookings(updatedBookings);
         closeModal();
       } else {
-        setMessage("Failed to update booking. Please try again.");
+        // Parse response to JSON
+        const errorData = await response.json();
+  
+        // Extract error message
+        const message = errorData.errors && errorData.errors.length > 0 ? errorData.errors[0].message : 'Failed to update booking. Please try again.';
+  
+        setMessage(message);
       }
     } catch (error) {
-      console.log("Update booking error:", error);
       setMessage("Failed to update booking. Please try again.");
     }
-  };
+  };  
 
   const today = new Date(); // Get the current date
 
