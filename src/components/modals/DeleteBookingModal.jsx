@@ -2,12 +2,13 @@ import React from 'react';
 import * as MS from "./Modals.Styles";
 import { deleteBooking } from "../../handlers/DeleteBooking";
 
-function DeleteBookingModal({modalIsOpen, closeModal, deleteId, setBookings, bookings}) {
+function DeleteBookingModal({modalIsOpen, closeModal, deleteId, setBookings, bookings, menuOpen}) {
     return (
         <MS.StyledModal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Delete Booking Modal"
+            menuOpen={menuOpen}
         >
             <MS.ModalContent>
                 <MS.ModalHeader>Delete Booking</MS.ModalHeader>

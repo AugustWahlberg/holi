@@ -114,6 +114,7 @@ const closeEditModal = () => {
     deleteId={deleteId} 
     setBookings={setBookings} 
     bookings={bookings}
+    menuOpen={menuOpen}
 />
 
 <EditBookingModal
@@ -122,6 +123,7 @@ const closeEditModal = () => {
   booking={editBooking} 
   setBookings={setBookings} 
   bookings={bookings}
+  menuOpen={menuOpen}
 />
 
     

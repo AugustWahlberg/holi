@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as MS from "./Modals.Styles";
 import { handleBook } from "../../api/HandleBook";
 
-function BookingModal({ modalIsOpen, closeModal, startDate, endDate, setStartDate, setEndDate, guests, setGuests, venueId }) {
+function BookingModal({ modalIsOpen, closeModal, startDate, endDate, setStartDate, setEndDate, guests, setGuests, venueId, menuOpen }) {
     const [message, setMessage] = useState('');
 
     const makeBooking = () => {
@@ -22,11 +22,14 @@ function BookingModal({ modalIsOpen, closeModal, startDate, endDate, setStartDat
         });
     };
     
+    const today = new Date(); // Get the current date
+
     return (
         <MS.StyledModal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Booking Modal"
+            menuOpen={menuOpen}
         >
             <MS.ModalContent>
                 <MS.ModalHeader>Create a booking</MS.ModalHeader>
@@ -47,6 +50,7 @@ function BookingModal({ modalIsOpen, closeModal, startDate, endDate, setStartDat
                         placeholderText="Start date"
                         dateFormat="yyyy-MM-dd"
                         locale="en-GB"
+                        minDate={today} // Set the minimum selectable date to today
                     />
 
                     <MS.DatePicker
@@ -62,7 +66,7 @@ function BookingModal({ modalIsOpen, closeModal, startDate, endDate, setStartDat
                     />
                 </MS.ModalInputGroup>
 
-                <MS.ModalFeedback>{message}</MS.ModalFeedback>
+                {message && <MS.ModalFeedback>{message}</MS.ModalFeedback>}
 
                 <MS.ModalButtonGroup>
                     <MS.CloseModal onClick={closeModal}>Close</MS.CloseModal>

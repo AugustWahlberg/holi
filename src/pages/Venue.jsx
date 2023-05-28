@@ -119,6 +119,7 @@ function Venue({menuOpen}) {
     guests={guests}
     setGuests={setGuests}
     venueId={id}
+    menuOpen={menuOpen}
 />
 
       </>

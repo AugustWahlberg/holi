@@ -67,7 +67,7 @@ color: #003144;
 export const StyledModal = styled(Modal)`
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: ${props => props.menuOpen ? 'calc(50% + 130px)' : '50%'};
   transform: translate(-50%, -50%);
   width: 350px;
   background-color: #003144;;
@@ -75,7 +75,7 @@ export const StyledModal = styled(Modal)`
   padding: 20px;
   outline: none;
   z-index:100;
-  margin-left: ${props => props.menuOpen ? '130px' : '0px'};
+ 
 `;
 
 export const ModalButtonGroup = styled.div`
