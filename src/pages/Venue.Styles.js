@@ -83,7 +83,6 @@ font-size: 18px;
 
 
 export const BookButton = styled.button`
-  background: #003144;
   color: #fff;
   padding: 10px 20px;
   align-items: center;
@@ -92,6 +91,12 @@ export const BookButton = styled.button`
   cursor: pointer;
   margin-bottom: 10px;
   width: 100px;
+  background-color:rgba(0, 49, 68, 0.8);
+  
+  
+  :hover {
+    background-color:rgba(0, 49, 68, 1);
+  };
   
 `;
 

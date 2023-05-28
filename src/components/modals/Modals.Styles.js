@@ -52,16 +52,26 @@ export const CloseModal = styled.button`
   cursor: pointer;
   background: rgba(189, 18, 31, 0.8);
   margin-right: 10px;
+  width: 100px;
+
+  :hover {
+    background: rgba(189, 18, 31, 1);
+  }
 `;
 
 export const ConfirmModal = styled.button`
-background: #fff;
 color: #003144;
-  padding: 10px 20px;
-  align-items: center;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+padding: 10px 20px;
+align-items: center;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+background-color: rgba(255, 252, 252, 0.9);
+width: 100px;
+
+  :hover{
+    background-color: rgba(255, 252, 252, 1);
+  }
 `;
 
 export const StyledModal = styled(Modal)`

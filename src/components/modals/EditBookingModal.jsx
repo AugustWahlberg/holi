@@ -60,7 +60,7 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
       menuOpen={menuOpen}
     >
       <MS.ModalContent>
-        <MS.ModalHeader>Edit a booking</MS.ModalHeader>
+        <MS.ModalHeader>Edit booking</MS.ModalHeader>
         <MS.ModalInputGroup>
           <MS.ModalInput
             type="number"
@@ -98,7 +98,7 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
 
         <MS.ModalButtonGroup>
           <MS.CloseModal onClick={closeModal}>Close</MS.CloseModal>
-          <MS.ConfirmModal onClick={updateBooking}>Update Booking</MS.ConfirmModal>
+          <MS.ConfirmModal onClick={updateBooking}>Update</MS.ConfirmModal>
         </MS.ModalButtonGroup>
       </MS.ModalContent>
     </MS.StyledModal>
@@ -106,3 +106,5 @@ const EditBookingModal = ({ modalIsOpen, closeModal, booking, setBookings, booki
 };
 
 export default EditBookingModal;
+
+

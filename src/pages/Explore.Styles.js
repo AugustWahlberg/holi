@@ -68,6 +68,10 @@ export const ViewBtn = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 16px;
+
+  :hover {
+    background-color:rgba(0, 49, 68, 1);
+  }
 `;
 
 export const Location = styled.p`
