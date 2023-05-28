@@ -31,6 +31,7 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
 const [editId, setEditId] = useState(null);
 
 const openEditModal = (booking) => {
+  console.log("Booking object:", booking); // Add this console log
   setEditModalIsOpen(true);
   setEditBooking(booking);
 };
@@ -117,14 +118,16 @@ const closeEditModal = () => {
     menuOpen={menuOpen}
 />
 
-<EditBookingModal
-  modalIsOpen={editModalIsOpen} 
-  closeModal={closeEditModal} 
-  booking={editBooking} 
-  setBookings={setBookings} 
-  bookings={bookings}
-  menuOpen={menuOpen}
-/>
+{editBooking && ( // Add this null check
+      <EditBookingModal
+        modalIsOpen={editModalIsOpen}
+        closeModal={closeEditModal}
+        booking={editBooking}
+        setBookings={setBookings}
+        bookings={bookings}
+        menuOpen={menuOpen}
+      />
+    )}
 
     
     </>

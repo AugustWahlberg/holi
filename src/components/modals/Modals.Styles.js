@@ -94,20 +94,6 @@ export const ModalButtonGroup = styled.div`
   width:230px;
 `;
 
-export const ModalFeedback = styled.div`
-  text-align: center;
-  background-color: #fff;
-  color: #F16FBE;
-  border-radius:5px;
-  margin: 5px;
-  font-size: 13px;
-  margin-bottom: 20px;
-  margin-top: -15px;
-  width:300px;
-  font-family: 'Roboto', sans-serif;
-  height: auto;
-  padding: 8px;
-`;
 
 export const ModalInputGroup = styled.div`
   margin-bottom: 20px;
@@ -133,4 +119,19 @@ export const ModalText = styled.p`
   color: #fff;
   margin-bottom: 20px;
   margin-top: 0px;
+`;
+
+export const ModalFeedback = styled.div`
+  text-align: center;
+  background-color: #fff;
+  color: #F16FBE;
+  border-radius:5px;
+  margin: 5px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  width:300px;
+  font-family: 'Roboto', sans-serif;
+  height: auto;
+  padding: 8px;
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as MS from './Modals.Styles';
 import { handleBook } from '../../api/HandleBook';
 import BookingCalendar from './BookingCalendar';
@@ -17,9 +17,26 @@ function BookingModal({
 }) {
   const [message, setMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [maxGuests, setMaxGuests] = useState(0);  // Add a new state variable to hold the maximum number of guests
+
+  useEffect(() => {
+    const fetchVenueDetails = async () => {
+      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/venues/${venueId}`);
+      if (response.ok) {
+        const venue = await response.json();
+        setMaxGuests(venue.maxGuests);
+      } else {
+        console.error('Failed to fetch venue details');
+      }
+    };
+
+    fetchVenueDetails();
+  }, [venueId]);
 
   const makeBooking = () => {
     const accessToken = localStorage.getItem('accessToken');
+    setErrorMessage(''); // Clear the error message
+
     if (!accessToken) {
       setMessage('You have to be logged in to book');
       return;
@@ -40,6 +57,11 @@ function BookingModal({
       return;
     }
 
+    if (guests > maxGuests) { // Use the state variable here
+      setErrorMessage(`The number of guests cannot exceed ${maxGuests}`);
+      return;
+    }
+
     handleBook(startDate, endDate, guests, venueId).then((response) => {
       setMessage(response.message);
       if (response.success) {
@@ -50,21 +72,17 @@ function BookingModal({
     });
   };
 
+  
   const isConsecutiveDates = (start, end) => {
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-    const nextDay = new Date(startDate);
+    const startDateObj = new Date(start);
+    const endDateObj = new Date(end);
+  
+    const nextDay = new Date(startDateObj);
     nextDay.setDate(nextDay.getDate() + 1);
-    return nextDay.getTime() !== endDate.getTime();
+  
+    return nextDay <= endDateObj;
   };
   
-  
-  const clearError = () => {
-    setErrorMessage('');
-  };
-
-  const today = new Date(); // Get the current date
-
   return (
     <MS.StyledModal
       isOpen={modalIsOpen}
@@ -90,11 +108,9 @@ function BookingModal({
             setEndDate={setEndDate}
           />
 
-          {/* Rest of the code */}
         </MS.ModalInputGroup>
 
         {errorMessage && <MS.ModalFeedback>{errorMessage}</MS.ModalFeedback>}
-        {message && <MS.ModalFeedback>{message}</MS.ModalFeedback>}
 
         <MS.ModalButtonGroup>
           <MS.CloseModal onClick={closeModal}>Close</MS.CloseModal>
