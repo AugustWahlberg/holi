@@ -4,6 +4,7 @@ import { TbBrowserCheck, TbDoorEnter, TbDoorExit, TbUsers} from "react-icons/tb"
 import { BeatLoader } from "react-spinners";
 import DeleteBookingModal from "../components/modals/DeleteBookingModal";
 import fetchBookingData from '../api/FetchBookingData';
+import EditBookingModal from "../components/modals/EditBookingModal";
 
 import * as S from "./MyBookings.Styles";
 import * as CS from "./CommunComponents.Styles";
@@ -14,6 +15,7 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
   const [loading, setLoading] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const [editBooking, setEditBooking] = useState(null);
 
   const openModal = (id) => {
     setIsOpen(true);
@@ -24,6 +26,20 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
     setIsOpen(false);
     setDeleteId(null);
   };
+
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+const [editId, setEditId] = useState(null);
+
+const openEditModal = (booking) => {
+  setEditModalIsOpen(true);
+  setEditBooking(booking);
+};
+
+
+const closeEditModal = () => {
+  setEditModalIsOpen(false);
+  setEditId(null);
+};
 
 
   useEffect(() => {
@@ -55,14 +71,17 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
 
       {Array.isArray(bookings) ? (
   bookings.map((booking, index) => {
+   
+    if (!booking || !booking.venue) {
+      return null; // or some placeholder
+    }
     const dateFrom = new Date(booking.dateFrom).toLocaleDateString();
     const dateTo = new Date(booking.dateTo).toLocaleDateString();
     const created = new Date(booking.created).toLocaleDateString();
-
     return (
       <S.Box key={index}>
       <S.BookingImage>
-        <S.Image src={booking.venue.media[0]} alt="Venue" />
+        <S.Image src={booking.venue.media?.[0]} alt="Venue" />
       </S.BookingImage>
       <S.BookingContainer>
         <S.BookingInfo>
@@ -75,8 +94,9 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
         <S.ButtonsContainer>
         <Link to={`/venue/${booking.venue.id}`}>
     <S.ViewVenue>View Venue</S.ViewVenue>
+    
   </Link>
-          <S.EditButton>Edit</S.EditButton>
+  <S.EditButton onClick={() => openEditModal(booking)}>Edit</S.EditButton>
           <S.DeleteButton onClick={() => openModal(booking.id)}>Delete</S.DeleteButton>
         </S.ButtonsContainer>
       </S.BookingContainer>
@@ -95,6 +115,15 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
     setBookings={setBookings} 
     bookings={bookings}
 />
+
+<EditBookingModal
+  modalIsOpen={editModalIsOpen} 
+  closeModal={closeEditModal} 
+  booking={editBooking} 
+  setBookings={setBookings} 
+  bookings={bookings}
+/>
+
     
     </>
   );

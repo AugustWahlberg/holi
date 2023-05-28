@@ -90,12 +90,13 @@ export const ModalFeedback = styled.div`
   color: #F16FBE;
   border-radius:5px;
   margin: 5px;
-  padding: 8px;
   font-size: 13px;
   margin-bottom: 20px;
   margin-top: -15px;
   width:300px;
   font-family: 'Roboto', sans-serif;
+  height: auto;
+  padding: 8px;
 `;
 
 export const ModalInputGroup = styled.div`
