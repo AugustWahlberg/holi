@@ -54,7 +54,7 @@ function BookingCalendar({
         dateFormat="yyyy-MM-dd"
         locale="en-GB"
         minDate={today} // Set the minimum selectable date to today
-        filterDate={isBookedDate}
+        filterDate={(date) => !isBookedDate(date)} // Negate the result of isBookedDate
       />
 
       <DatePicker
@@ -67,7 +67,7 @@ function BookingCalendar({
         placeholderText="End date"
         dateFormat="yyyy-MM-dd"
         locale="en-GB"
-        filterDate={isBookedDate}
+        filterDate={(date) => !isBookedDate(date)} // Negate the result of isBookedDate
       />
     </>
   );

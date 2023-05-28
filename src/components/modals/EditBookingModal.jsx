@@ -49,10 +49,6 @@ const EditBookingModal = ({
       return;
     }
 
-    if (!isConsecutiveDates(dateFrom, dateTo)) {
-      setErrorMessage("The selected dates must be consecutive");
-      return;
-    }
 
     try {
       const token = localStorage.getItem("accessToken");
@@ -100,17 +96,6 @@ const EditBookingModal = ({
     }
   };
 
-  const today = new Date();
-
-  const isConsecutiveDates = (start, end) => {
-    const startDateObj = new Date(start);
-    const endDateObj = new Date(end);
-
-    const nextDay = new Date(startDateObj);
-    nextDay.setDate(nextDay.getDate() + 1);
-
-    return nextDay <= endDateObj;
-  };
 
   const clearError = () => {
     setErrorMessage("");

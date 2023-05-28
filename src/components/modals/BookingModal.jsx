@@ -54,11 +54,7 @@ function BookingModal({
       return;
     }
 
-    if (!isConsecutiveDates(startDate, endDate)) {
-      setErrorMessage("The selected dates must be consecutive");
-      return;
-    }
-
+  
     if (guests > maxGuests) {
       // Use the state variable here
       setErrorMessage(`The number of guests cannot exceed ${maxGuests}`);
@@ -75,15 +71,6 @@ function BookingModal({
     });
   };
 
-  const isConsecutiveDates = (start, end) => {
-    const startDateObj = new Date(start);
-    const endDateObj = new Date(end);
-
-    const nextDay = new Date(startDateObj);
-    nextDay.setDate(nextDay.getDate() + 1);
-
-    return nextDay <= endDateObj;
-  };
 
   return (
     <MS.StyledModal
