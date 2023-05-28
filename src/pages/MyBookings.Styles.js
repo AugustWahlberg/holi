@@ -26,7 +26,7 @@ export const BookingContainer = styled.div`
 `;
 
 export const BookingInfo = styled.div`
-  padding-left: 20px; 
+  padding-left: 20px;
 `;
 
 export const BookingImage = styled.div`
@@ -36,7 +36,7 @@ export const BookingImage = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: 200px;
-  object-fit: cover; 
+  object-fit: cover;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -48,7 +48,6 @@ export const ButtonsContainer = styled.div`
   align-items: flex-end;
 `;
 
-
 export const Button = styled.button`
   padding: 8px;
   font-size: 14px;
@@ -59,29 +58,23 @@ export const Button = styled.button`
   margin: 6px;
 `;
 
-
 export const ViewVenue = styled(Button)`
-background-color: #fff;
-color: #003144;
-border: 1px solid #003144;
+  background-color: #fff;
+  color: #003144;
+  border: 1px solid #003144;
 
-
-&:hover {
-
-  border: 2px solid #003144;
-  
+  &:hover {
+    border: 2px solid #003144;
   }
- 
 `;
 
 export const EditButton = styled(Button)`
-background-color: rgba(0, 49, 68, 0.8);
-color: #fff;
-&:hover {
-  background-color: rgba(0, 49, 68, 1);
-}
+  background-color: rgba(0, 49, 68, 0.8);
+  color: #fff;
+  &:hover {
+    background-color: rgba(0, 49, 68, 1);
+  }
 `;
-
 
 export const DeleteButton = styled(Button)`
   background-color: rgba(189, 18, 31, 0.8);
@@ -91,7 +84,6 @@ export const DeleteButton = styled(Button)`
   }
 `;
 
-
 export const Info = styled.div`
   display: flex;
   align-items: center;
@@ -99,11 +91,9 @@ export const Info = styled.div`
   margin: 3px;
   margin-top: 8px;
   font-weight: 500;
-  
+
   svg {
     font-size: 16px;
     margin-right: 8px;
   }
 `;
-
-

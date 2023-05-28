@@ -12,12 +12,12 @@ export function SearchBar({ onSearchTermChange, menuOpen }) {
 
   return (
     <S.SearchElement menuOpen={menuOpen}>
-    <S.SearchInput
-      type="text"
-      value={query}
-      onChange={handleChange}
-      placeholder="Search destination"
-    />
-  </S.SearchElement>
+      <S.SearchInput
+        type="text"
+        value={query}
+        onChange={handleChange}
+        placeholder="Search destination"
+      />
+    </S.SearchElement>
   );
 }

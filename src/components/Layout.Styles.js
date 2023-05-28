@@ -19,6 +19,6 @@ export const ContentContainer = styled.div`
   padding-top: 40px;
 `;
 
-
 export const Header = styled.h1`
-font-size: 24px;`
+  font-size: 24px;
+`;

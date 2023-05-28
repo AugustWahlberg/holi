@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProductTitle = styled.h2`
   font-size: 20px;
-  margin-top:-5px;
+  margin-top: -5px;
 `;
 
 export const Rating = styled.p`
@@ -10,7 +10,7 @@ export const Rating = styled.p`
   display: flex;
   align-items: center;
   margin: 15px;
-  margin-left:5px;
+  margin-left: 5px;
   & > span {
     padding-left: 5px;
     padding-top: 3px;
@@ -48,10 +48,9 @@ export const StickyWrapper = styled.div`
   margin: 0 auto;
 `;
 
-
 export const ButtonWrapper = styled.div`
   position: absolute;
-  bottom: 25px; 
+  bottom: 25px;
   margin-left: 150px;
   & > a {
     text-decoration: none;
@@ -64,22 +63,22 @@ export const ViewBtn = styled.button`
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color:rgba(0, 49, 68, 0.8);;
+  background-color: rgba(0, 49, 68, 0.8);
   color: #fff;
   cursor: pointer;
   font-size: 16px;
 
   :hover {
-    background-color:rgba(0, 49, 68, 1);
+    background-color: rgba(0, 49, 68, 1);
   }
 `;
 
 export const Location = styled.p`
   margin: 10px;
-  margin-left:-10px ;
+  margin-left: -10px;
   margin-top: -10px;
   font-weight: 200;
-  color:#567784;
+  color: #567784;
 `;
 
 export const City = styled.span`
@@ -96,10 +95,9 @@ export const Country = styled.span`
   font-weight: 200;
 `;
 
-
 export const MaxGuestsWrapper = styled.div`
   position: absolute;
-  bottom: 65px; 
+  bottom: 65px;
   margin-left: 150px;
   & > a {
     text-decoration: none;
@@ -123,7 +121,7 @@ export const SpinnerContainer = styled.div`
 export const Box = styled.div`
   position: relative;
   width: 260px;
-  min-height:440px;
+  min-height: 440px;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
@@ -131,6 +129,6 @@ export const Box = styled.div`
 `;
 
 export const PriceRatingsWrapper = styled.div`
-  position:absolute;
-  bottom:10px;
+  position: absolute;
+  bottom: 10px;
 `;

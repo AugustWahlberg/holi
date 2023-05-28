@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Modal from 'react-modal';
-import ReactDatePicker from 'react-datepicker';
+import Modal from "react-modal";
+import ReactDatePicker from "react-datepicker";
 
 export const DatePicker = styled(ReactDatePicker)`
   padding: 10px;
@@ -37,9 +37,9 @@ export const ModalContent = styled.div`
 export const ModalHeader = styled.h2`
   margin-bottom: 10px;
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom:20px;
-  color: #ccc; 
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+  color: #ccc;
 `;
 
 export const CloseModal = styled.button`
@@ -60,16 +60,16 @@ export const CloseModal = styled.button`
 `;
 
 export const ConfirmModal = styled.button`
-color: #003144;
-padding: 10px 20px;
-align-items: center;
-border-radius: 5px;
-border: none;
-cursor: pointer;
-background-color: rgba(255, 252, 252, 0.9);
-width: 100px;
+  color: #003144;
+  padding: 10px 20px;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 252, 252, 0.9);
+  width: 100px;
 
-  :hover{
+  :hover {
     background-color: rgba(255, 252, 252, 1);
   }
 `;
@@ -77,23 +77,21 @@ width: 100px;
 export const StyledModal = styled(Modal)`
   position: absolute;
   top: 50%;
-  left: ${props => props.menuOpen ? 'calc(50% + 130px)' : '50%'};
+  left: ${(props) => (props.menuOpen ? "calc(50% + 130px)" : "50%")};
   transform: translate(-50%, -50%);
   width: 350px;
-  background-color: #003144;;
+  background-color: #003144;
   border-radius: 10px;
   padding: 20px;
   outline: none;
-  z-index:100;
- 
+  z-index: 100;
 `;
 
 export const ModalButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
-  width:230px;
+  width: 230px;
 `;
-
 
 export const ModalInputGroup = styled.div`
   margin-bottom: 20px;
@@ -124,14 +122,14 @@ export const ModalText = styled.p`
 export const ModalFeedback = styled.div`
   text-align: center;
   background-color: #fff;
-  color: #F16FBE;
-  border-radius:5px;
+  color: #f16fbe;
+  border-radius: 5px;
   margin: 5px;
   font-size: 13px;
   margin-bottom: 20px;
   margin-top: -15px;
-  width:300px;
-  font-family: 'Roboto', sans-serif;
+  width: 300px;
+  font-family: "Roboto", sans-serif;
   height: auto;
   padding: 8px;
 `;

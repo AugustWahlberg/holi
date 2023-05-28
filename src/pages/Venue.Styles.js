@@ -14,16 +14,15 @@ export const Box = styled.div`
   border: 1px solid rgba(0, 49, 68, 0.1);
   background: #ffffff;
 
-
   @media (max-width: 900px) {
-     width: 300px;
-     heigh: 200px;
+    width: 300px;
+    heigh: 200px;
   }
 `;
 
 export const TopSide = styled.div`
   width: 100%;
-  z-index:0;
+  z-index: 0;
 `;
 
 export const BottomSide = styled.div`
@@ -32,8 +31,6 @@ export const BottomSide = styled.div`
   width: 100%;
   height: 100%;
 `;
-
-
 
 export const Meta = styled.div`
   display: flex;
@@ -61,7 +58,6 @@ export const BackButton = styled.button`
   z-index: 2;
 `;
 
-
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,16 +67,11 @@ export const ButtonContainer = styled.div`
   height: 100%;
 `;
 
-
-
-
 export const BackIcon = styled(TbCircleArrowLeftFilled)`
-align-items: center;
-padding-right: 4px;
-font-size: 18px;
+  align-items: center;
+  padding-right: 4px;
+  font-size: 18px;
 `;
-
-
 
 export const BookButton = styled.button`
   color: #fff;
@@ -91,28 +82,24 @@ export const BookButton = styled.button`
   cursor: pointer;
   margin-bottom: 10px;
   width: 100px;
-  background-color:rgba(0, 49, 68, 0.8);
-  
-  
+  background-color: rgba(0, 49, 68, 0.8);
+
   :hover {
-    background-color:rgba(0, 49, 68, 1);
-  };
-  
+    background-color: rgba(0, 49, 68, 1);
+  }
 `;
-
-
 
 export const Header = styled.h2`
   margin-bottom: 10px;
   font-weight: 700;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 `;
 
 export const Price = styled.p`
   margin-bottom: 10px;
   color: #333;
   font-weight: bold;
-  font-size:22px;
+  font-size: 22px;
 `;
 
 export const Rating = styled.p`
@@ -129,7 +116,3 @@ export const Description = styled.p`
   margin-bottom: 10px;
   color: #666;
 `;
-
-
-
-

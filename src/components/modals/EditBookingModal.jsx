@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { subDays } from "date-fns";
-import EditBookingCalendar from './EditBookingCalendar';
+import EditBookingCalendar from "./EditBookingCalendar";
 import * as MS from "./Modals.Styles";
 
 const EditBookingModal = ({
@@ -16,7 +16,7 @@ const EditBookingModal = ({
 
   const [guests, setGuests] = useState(booking.guests);
   const [maxGuests, setMaxGuests] = useState(0); // New state for max guests
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchMaxGuests = async () => {
@@ -50,19 +50,19 @@ const EditBookingModal = ({
     }
 
     if (!isConsecutiveDates(dateFrom, dateTo)) {
-      setErrorMessage('The selected dates must be consecutive');
+      setErrorMessage("The selected dates must be consecutive");
       return;
     }
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
 
       const response = await fetch(
         `https://api.noroff.dev/api/v1/holidaze/bookings/${booking.id}`,
         {
-          method: 'PUT',
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
@@ -92,11 +92,11 @@ const EditBookingModal = ({
         const message =
           errorData.errors && errorData.errors.length > 0
             ? errorData.errors[0].message
-            : 'Failed to update booking. Please try again.';
+            : "Failed to update booking. Please try again.";
         setErrorMessage(message);
       }
     } catch (error) {
-      setErrorMessage('Failed to update booking. Please try again.');
+      setErrorMessage("Failed to update booking. Please try again.");
     }
   };
 
@@ -105,17 +105,16 @@ const EditBookingModal = ({
   const isConsecutiveDates = (start, end) => {
     const startDateObj = new Date(start);
     const endDateObj = new Date(end);
-  
+
     const nextDay = new Date(startDateObj);
     nextDay.setDate(nextDay.getDate() + 1);
-  
+
     return nextDay <= endDateObj;
   };
-  
+
   const clearError = () => {
-    setErrorMessage('');
+    setErrorMessage("");
   };
-  
 
   return (
     <MS.StyledModal
@@ -145,9 +144,7 @@ const EditBookingModal = ({
             />
           )}
         </MS.ModalInputGroup>
-        {errorMessage && (
-          <MS.ModalFeedback>{errorMessage}</MS.ModalFeedback>
-        )}
+        {errorMessage && <MS.ModalFeedback>{errorMessage}</MS.ModalFeedback>}
         <MS.ModalButtonGroup>
           <MS.CloseModal onClick={closeModal}>Close</MS.CloseModal>
           <MS.ConfirmModal

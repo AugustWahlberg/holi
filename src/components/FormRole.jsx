@@ -1,30 +1,30 @@
 // FormRole.jsx
-import React from 'react';
-import * as S from '../pages/Homepage.Styles';
+import React from "react";
+import * as S from "../pages/Homepage.Styles";
 
 const FormRole = ({ role, setRole, register }) => {
   return (
     <S.RoleContainer>
-      <S.RoleLabel isSelected={role === 'client'}>
+      <S.RoleLabel isSelected={role === "client"}>
         <S.RoleInput
-          {...register('role')}
+          {...register("role")}
           type="radio"
           value="client"
-          checked={role === 'client'}
-          onChange={() => setRole('client')}
+          checked={role === "client"}
+          onChange={() => setRole("client")}
         />
-        <S.CheckMark isSelected={role === 'client'} />
+        <S.CheckMark isSelected={role === "client"} />
         Client
       </S.RoleLabel>
-      <S.RoleLabel isSelected={role === 'manager'}>
+      <S.RoleLabel isSelected={role === "manager"}>
         <S.RoleInput
-          {...register('role')}
+          {...register("role")}
           type="radio"
           value="manager"
-          checked={role === 'manager'}
-          onChange={() => setRole('manager')}
+          checked={role === "manager"}
+          onChange={() => setRole("manager")}
         />
-        <S.CheckMark isSelected={role === 'manager'} />
+        <S.CheckMark isSelected={role === "manager"} />
         Manager
       </S.RoleLabel>
     </S.RoleContainer>

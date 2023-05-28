@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import * as MS from './Modals.Styles';
-import { handleBook } from '../../api/HandleBook';
-import BookingCalendar from './BookingCalendar';
+import React, { useState, useEffect } from "react";
+import * as MS from "./Modals.Styles";
+import { handleBook } from "../../api/HandleBook";
+import BookingCalendar from "./BookingCalendar";
 
 function BookingModal({
   modalIsOpen,
@@ -15,18 +15,20 @@ function BookingModal({
   venueId,
   menuOpen,
 }) {
-  const [message, setMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [maxGuests, setMaxGuests] = useState(0);  // Add a new state variable to hold the maximum number of guests
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [maxGuests, setMaxGuests] = useState(0); // Add a new state variable to hold the maximum number of guests
 
   useEffect(() => {
     const fetchVenueDetails = async () => {
-      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/venues/${venueId}`);
+      const response = await fetch(
+        `https://api.noroff.dev/api/v1/holidaze/venues/${venueId}`
+      );
       if (response.ok) {
         const venue = await response.json();
         setMaxGuests(venue.maxGuests);
       } else {
-        console.error('Failed to fetch venue details');
+        console.error("Failed to fetch venue details");
       }
     };
 
@@ -34,30 +36,31 @@ function BookingModal({
   }, [venueId]);
 
   const makeBooking = () => {
-    const accessToken = localStorage.getItem('accessToken');
-    setErrorMessage(''); // Clear the error message
+    const accessToken = localStorage.getItem("accessToken");
+    setErrorMessage(""); // Clear the error message
 
     if (!accessToken) {
-      setMessage('You have to be logged in to book');
+      setMessage("You have to be logged in to book");
       return;
     }
 
     if (!startDate || !endDate) {
-      setErrorMessage('Please select a start and end date');
+      setErrorMessage("Please select a start and end date");
       return;
     }
 
     if (startDate >= endDate) {
-      setErrorMessage('The end date must be after the start date');
+      setErrorMessage("The end date must be after the start date");
       return;
     }
 
     if (!isConsecutiveDates(startDate, endDate)) {
-      setErrorMessage('The selected dates must be consecutive');
+      setErrorMessage("The selected dates must be consecutive");
       return;
     }
 
-    if (guests > maxGuests) { // Use the state variable here
+    if (guests > maxGuests) {
+      // Use the state variable here
       setErrorMessage(`The number of guests cannot exceed ${maxGuests}`);
       return;
     }
@@ -72,17 +75,16 @@ function BookingModal({
     });
   };
 
-  
   const isConsecutiveDates = (start, end) => {
     const startDateObj = new Date(start);
     const endDateObj = new Date(end);
-  
+
     const nextDay = new Date(startDateObj);
     nextDay.setDate(nextDay.getDate() + 1);
-  
+
     return nextDay <= endDateObj;
   };
-  
+
   return (
     <MS.StyledModal
       isOpen={modalIsOpen}
@@ -107,7 +109,6 @@ function BookingModal({
             setStartDate={setStartDate}
             setEndDate={setEndDate}
           />
-
         </MS.ModalInputGroup>
 
         {errorMessage && <MS.ModalFeedback>{errorMessage}</MS.ModalFeedback>}

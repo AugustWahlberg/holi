@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { TbCheck as CheckIcon } from "react-icons/tb";
 
@@ -26,10 +26,10 @@ export const LeftSide = styled.div`
     width: 100%;
     height: 120px;
   }
-  
+
   &::after {
     content: "";
-    background-image: url(${props => props.backgroundImage});
+    background-image: url(${(props) => props.backgroundImage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -77,15 +77,16 @@ export const Toggle = styled.div`
 `;
 
 export const ToggleButton = styled.button`
-  background-color: ${props => props.isSelected ? '#003144' : 'rgba(0, 49, 68, 0.2)'};
-  border: ${props => props.isSelected ? '4px solid #F16FBE': 'none'};
-  color: ${props => props.isSelected ? '#fff' : 'inherit'};
+  background-color: ${(props) =>
+    props.isSelected ? "#003144" : "rgba(0, 49, 68, 0.2)"};
+  border: ${(props) => (props.isSelected ? "4px solid #F16FBE" : "none")};
+  color: ${(props) => (props.isSelected ? "#fff" : "inherit")};
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
   padding: 20px;
   margin-bottom: 0;
-  width:180px;
+  width: 180px;
   letter-spacing: 0.1em;
 `;
 
@@ -107,8 +108,8 @@ export const Input = styled.input`
   border-radius: 5px;
   background-color: rgba(51, 173, 181, 0.05);
   border: 1px solid rgba(0, 153, 162, 0.35);
-  width:100%;
-  color: #2D2F2F;
+  width: 100%;
+  color: #2d2f2f;
   font-size: 14px;
 `;
 
@@ -116,16 +117,16 @@ export const SubmitButton = styled.button`
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(135deg, #F16FBE, #003144);
+  background: linear-gradient(135deg, #f16fbe, #003144);
   color: #fff;
   cursor: pointer;
   font-size: 16px;
-  width:50%;
+  width: 50%;
   opacity: 0.8;
 
   &:hover {
     opacity: 1;
-    }
+  }
 `;
 
 export const VisitLink = styled(Link)`
@@ -134,7 +135,6 @@ export const VisitLink = styled(Link)`
   color: #003144;
   margin-top: 20px;
 `;
-
 
 export const RoleContainer = styled.div`
   display: flex;
@@ -157,10 +157,10 @@ export const RoleLabel = styled.label`
   margin-left: 8px;
   color: #003144;
   font-size: 18px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 120px; // Add width to ensure same size for both buttons;
-  border: 3px solid rgba(0, 153, 162, 0.35); 
-  border-color: ${props => props.isSelected ? '#003144' : '#ccc'};
+  border: 3px solid rgba(0, 153, 162, 0.35);
+  border-color: ${(props) => (props.isSelected ? "#003144" : "#ccc")};
 `;
 
 export const RoleInput = styled.input`
@@ -179,16 +179,15 @@ export const CheckMark = ({ isSelected }) => {
           right: "-2px",
           color: "#003144",
           fontSize: "28px",
-          display: isSelected ? 'block' : 'none'
+          display: isSelected ? "block" : "none",
         }}
       />
     )
   );
 };
 
-
 export const ErrorMessage = styled.div`
-  color: #BD121F;
+  color: #bd121f;
   margin-top: -7px;
   margin-bottom: 10px;
   font-size: 13px;
@@ -206,11 +205,9 @@ export const SuccessMessage = styled.p`
 export const Feedback = styled.div`
   text-align: center;
   background-color: #003144;
-  color: #F16FBE;
-  border-radius:5px;
+  color: #f16fbe;
+  border-radius: 5px;
   margin: 5px;
   padding: 8px;
   font-size: 13px;
 `;
-
-

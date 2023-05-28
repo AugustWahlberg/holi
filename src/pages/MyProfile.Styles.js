@@ -27,17 +27,17 @@ export const SettingsIcon = styled(TbSettings)`
 `;
 
 export const ProfileBody = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 `;
 
 export const ProfileAvatar = styled.div`
   width: 160px;
   height: 160px;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -45,22 +45,21 @@ export const ProfileAvatar = styled.div`
   }
 `;
 
-
 export const EditAvatarBtn = styled.button`
-width: 50%;
-padding: 10px 20px;
-background: rgba(0, 49, 68, 0.8);
-border-radius: 5px;
-border: none;
-margin: 20px auto;
-display: block;
-justify-content: center;
-color:#fff;
+  width: 50%;
+  padding: 10px 20px;
+  background: rgba(0, 49, 68, 0.8);
+  border-radius: 5px;
+  border: none;
+  margin: 20px auto;
+  display: block;
+  justify-content: center;
+  color: #fff;
 
-&:hover {
-  background: rgba(0, 49, 68, 1);
-  cursor: pointer;
-}
+  &:hover {
+    background: rgba(0, 49, 68, 1);
+    cursor: pointer;
+  }
 `;
 
 export const InfoDiv = styled.div`
@@ -76,15 +75,14 @@ export const BoldText = styled.span`
 
 export const RegularText = styled.span``;
 
-
 export const AvatarUpdateDiv = styled.div`
   background-color: #fff;
   padding: 15px;
-  color: #F16FBE;
+  color: #f16fbe;
   border-radius: 5px;
   width: 220px;
   margin: 10px auto;
-  margin-top:-30px;
+  margin-top: -30px;
 `;
 
 export const AvatarInputField = styled.input`
@@ -129,7 +127,7 @@ export const CancelBtn = styled.button`
 
 export const ErrorMessage = styled.p`
   text-align: center;
-  color: #F16FBE;
+  color: #f16fbe;
   border-radius: 5px;
   margin: 5px;
   font-size: 13px;

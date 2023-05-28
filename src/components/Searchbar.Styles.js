@@ -5,11 +5,10 @@ export const SearchElement = styled.form`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  z-index:2;
+  z-index: 2;
   padding: 5px;
   margin: 10px;
 `;
-
 
 export const SearchInput = styled.input`
   width: 320px;
@@ -20,6 +19,6 @@ export const SearchInput = styled.input`
   color: rgba(0, 49, 68, 0.4);
   border: none;
   padding: 5px;
-  width:200px;
-  padding:14px;
+  width: 200px;
+  padding: 14px;
 `;

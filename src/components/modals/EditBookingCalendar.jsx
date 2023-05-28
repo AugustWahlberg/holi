@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { DatePicker, ModalFeedback } from './Modals.Styles';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useEffect, useState } from "react";
+import { DatePicker, ModalFeedback } from "./Modals.Styles";
+import "react-datepicker/dist/react-datepicker.css";
 
-function EditBookingCalendar({ booking, startDate, endDate, setStartDate, setEndDate }) {
+function EditBookingCalendar({
+  booking,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+}) {
   const [bookings, setBookings] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -19,7 +25,7 @@ function EditBookingCalendar({ booking, startDate, endDate, setStartDate, setEnd
           }
         }
       } catch (error) {
-        console.error('Error fetching bookings:', error);
+        console.error("Error fetching bookings:", error);
       }
     };
 
@@ -27,14 +33,15 @@ function EditBookingCalendar({ booking, startDate, endDate, setStartDate, setEnd
   }, [booking]);
 
   const isBookedDate = (date) => {
-    const formattedDate = date.toISOString().split('T')[0];
+    const formattedDate = date.toISOString().split("T")[0];
     return bookings.some((bookingItem) => {
-      const bookingStartDate = bookingItem.dateFrom.split('T')[0];
-      const bookingEndDate = bookingItem.dateTo.split('T')[0];
-      return formattedDate >= bookingStartDate && formattedDate <= bookingEndDate;
+      const bookingStartDate = bookingItem.dateFrom.split("T")[0];
+      const bookingEndDate = bookingItem.dateTo.split("T")[0];
+      return (
+        formattedDate >= bookingStartDate && formattedDate <= bookingEndDate
+      );
     });
   };
-
 
   const today = new Date(); // Get the current date
 
@@ -65,7 +72,6 @@ function EditBookingCalendar({ booking, startDate, endDate, setStartDate, setEnd
         locale="en-GB"
         filterDate={isBookedDate}
       />
-
     </>
   );
 }

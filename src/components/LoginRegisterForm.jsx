@@ -1,9 +1,8 @@
-
-import React from 'react';
-import * as S from '../pages/Homepage.Styles';
-import FormRole from './FormRole';
-import FormInput from './FormInput';
-import FormSubmitButton from './FormSubmit';
+import React from "react";
+import * as S from "../pages/Homepage.Styles";
+import FormRole from "./FormRole";
+import FormInput from "./FormInput";
+import FormSubmitButton from "./FormSubmit";
 
 const LoginRegisterForm = ({
   isLogin,
@@ -19,14 +18,14 @@ const LoginRegisterForm = ({
   switchToLogin,
   switchToRegister,
   feedbackReg,
-  feedbackLogin
+  feedbackLogin,
 }) => {
   const isNoroffEmail = (value) => {
-    return value.endsWith('stud.noroff.no');
+    return value.endsWith("stud.noroff.no");
   };
 
   const isPasswordMatch = (value) => {
-    return value === watch('password');
+    return value === watch("password");
   };
 
   return (
@@ -52,57 +51,60 @@ const LoginRegisterForm = ({
             <FormRole role={role} setRole={setRole} register={register} />
           )}
           {!isLogin && (
-            <FormInput 
+            <FormInput
               register={register}
-              name='username'
-              placeholder='Username'
-              rules={{ 
-                required: true, 
-                maxLength: { 
-                  value: 20, 
-                  message: 'Username cannot be more than 20 characters' 
+              name="username"
+              placeholder="Username"
+              rules={{
+                required: true,
+                maxLength: {
+                  value: 20,
+                  message: "Username cannot be more than 20 characters",
                 },
                 pattern: {
-                  value: /^[a-zA-Z0-9_]+$/, 
-                  message: 'Username can only contain alphanumeric characters and underscores'
+                  value: /^[a-zA-Z0-9_]+$/,
+                  message:
+                    "Username can only contain alphanumeric characters and underscores",
                 },
               }}
               errors={errors.username}
             />
           )}
-          <FormInput 
+          <FormInput
             register={register}
-            name='email'
-            placeholder='Email'
-            rules={{ 
-              required: 'Email is required', 
-              validate: value => isNoroffEmail(value) || 'Email has to be a @stud.noroff.no' 
+            name="email"
+            placeholder="Email"
+            rules={{
+              required: "Email is required",
+              validate: (value) =>
+                isNoroffEmail(value) || "Email has to be a @stud.noroff.no",
             }}
             errors={errors.email}
           />
-          <FormInput 
+          <FormInput
             register={register}
-            name='password'
-            placeholder='Password'
-            type='password'
-            rules={{ 
-              required: 'Password is required', 
-              minLength: { 
-                value: 8, 
-                message: 'Password should be at least 8 characters' 
-              }
+            name="password"
+            placeholder="Password"
+            type="password"
+            rules={{
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password should be at least 8 characters",
+              },
             }}
             errors={errors.password}
           />
           {!isLogin && (
-            <FormInput 
+            <FormInput
               register={register}
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              type='password'
-              rules={{ 
-                required: 'Confirm Password is required', 
-                validate: value => isPasswordMatch(value) || 'Passwords do not match' 
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              type="password"
+              rules={{
+                required: "Confirm Password is required",
+                validate: (value) =>
+                  isPasswordMatch(value) || "Passwords do not match",
               }}
               errors={errors.confirmPassword}
             />
@@ -119,6 +121,3 @@ const LoginRegisterForm = ({
 };
 
 export default LoginRegisterForm;
-
-
-

@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { DatePicker } from './Modals.Styles';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useEffect, useState } from "react";
+import { DatePicker } from "./Modals.Styles";
+import "react-datepicker/dist/react-datepicker.css";
 
-function BookingCalendar({ venueId, startDate, endDate, setStartDate, setEndDate }) {
+function BookingCalendar({
+  venueId,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+}) {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
@@ -16,7 +22,7 @@ function BookingCalendar({ venueId, startDate, endDate, setStartDate, setEndDate
           setBookings(data.bookings);
         }
       } catch (error) {
-        console.error('Error fetching bookings:', error);
+        console.error("Error fetching bookings:", error);
       }
     };
 
@@ -24,11 +30,13 @@ function BookingCalendar({ venueId, startDate, endDate, setStartDate, setEndDate
   }, [venueId]);
 
   const isBookedDate = (date) => {
-    const formattedDate = date.toISOString().split('T')[0];
+    const formattedDate = date.toISOString().split("T")[0];
     return bookings.some((booking) => {
-      const bookingStartDate = booking.dateFrom.split('T')[0];
-      const bookingEndDate = booking.dateTo.split('T')[0];
-      return formattedDate >= bookingStartDate && formattedDate <= bookingEndDate;
+      const bookingStartDate = booking.dateFrom.split("T")[0];
+      const bookingEndDate = booking.dateTo.split("T")[0];
+      return (
+        formattedDate >= bookingStartDate && formattedDate <= bookingEndDate
+      );
     });
   };
 

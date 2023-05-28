@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Top = styled.div`
-width: 100%;
-display: flex;
-justify-content: center;
-margin: 0 auto;
-position: fixed;
-z-index:1;
-background-color:#fff;
-height: auto;
-margin-left: ${props => props.menuOpen ? '130px' : '0px'};
-min-height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
+  height: auto;
+  margin-left: ${(props) => (props.menuOpen ? "130px" : "0px")};
+  min-height: 60px;
 `;
 
 export const SpinnerContainer = styled.div`
@@ -18,14 +18,14 @@ export const SpinnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-left: ${props => props.menuOpen ? '260px' : '0px'};
+  margin-left: ${(props) => (props.menuOpen ? "260px" : "0px")};
 `;
 
 export const NotFound = styled.div`
   margin-top: 40px;
-  padding:10px;
+  padding: 10px;
   background-color: #003144;
-  color: #FFCFEC;
+  color: #ffcfec;
 `;
 
 export const Container = styled.div`
@@ -33,9 +33,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 80px;
-  margin-left: ${props => props.menuOpen ? '260px' : '0px'};
+  margin-left: ${(props) => (props.menuOpen ? "260px" : "0px")};
   transition: margin-left 0.3s ease-out;
-  
+
   @media (max-width: 600px) {
     margin-left: 0;
   }
@@ -51,17 +51,3 @@ export const Header = styled.h2`
  margin: 22px;
  color: #003144;
 `;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
