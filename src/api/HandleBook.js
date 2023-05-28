@@ -19,7 +19,7 @@ export const handleBook = async (startDate, endDate, guests, id) => {
     }),
   };
   
-  const response = await fetch('https://api.noroff.dev/api/v1/holidaze/bookings', options);
+  const response = await fetch('https://api.noroff.dev/api/v1/holidaze/bookings?_venue=true`', options);
   
   if (response.ok) {
     const bookingData = await response.json();
