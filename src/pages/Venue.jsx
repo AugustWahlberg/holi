@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import { registerLocale } from  "react-datepicker";
-import handleBook from '../api/HandleBook';
+import BookingModal from '../components/modals/BookingModal';
 import enGB from 'date-fns/locale/en-GB';
 registerLocale('en-GB', enGB)
 
@@ -51,25 +51,6 @@ function Venue({menuOpen}) {
 
   const closeModal = () => {
     setModalIsOpen(false);
-  };
-
-  const [message, setMessage] = useState('');
-
-  const makeBooking = () => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (!accessToken) {
-      setMessage("You have to be logged in to book");
-      return;
-    }
-    
-    handleBook(startDate, endDate, guests, id).then(response => {
-      setMessage(response.message);
-      if (response.success) {
-        setTimeout(() => {
-          setModalIsOpen(false);  // close the modal after successful booking
-        }, 2000);
-      }
-    });
   };
   
 
@@ -128,56 +109,18 @@ function Venue({menuOpen}) {
         </S.Box>
       </CS.Container>
     
-      <CS.StyledModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Booking Modal"
-        menuOpen={menuOpen}
-        
-      >
-        <CS.ModalContent>
-          <CS.ModalHeader>Create a booking</CS.ModalHeader>
-          <CS.ModalInputGroup>
-          <CS.ModalInput
-  type="number"
-  min="0"
-  placeholder="Number of guests"
-  onChange={event => setGuests(parseInt(event.target.value, 10))}
+      <BookingModal 
+    modalIsOpen={modalIsOpen} 
+    closeModal={closeModal} 
+    startDate={startDate}
+    endDate={endDate}
+    setStartDate={setStartDate}
+    setEndDate={setEndDate}
+    guests={guests}
+    setGuests={setGuests}
+    venueId={id}
 />
 
-    
-            <CS.DatePicker
-              selected={startDate}
-              onChange={date => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              placeholderText="Start date"
-              dateFormat="yyyy-MM-dd"
-              locale="en-GB"
-            />
-    
-            <CS.DatePicker
-              selected={endDate}
-              onChange={date => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              placeholderText="End date"
-              dateFormat="yyyy-MM-dd"
-              locale="en-GB"
-            />
-          </CS.ModalInputGroup>
-
-          <CS.ModalFeedback>{message}</CS.ModalFeedback>
-    
-          <CS.ModalButtonGroup>
-            <CS.CloseModal onClick={closeModal}>Close</CS.CloseModal>
-            <CS.ConfirmModal onClick={makeBooking}>Book now</CS.ConfirmModal>
-          </CS.ModalButtonGroup>
-        </CS.ModalContent>
-      </CS.StyledModal>
       </>
     );
     

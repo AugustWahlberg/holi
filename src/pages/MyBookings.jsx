@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TbBrowserCheck, TbDoorEnter, TbDoorExit, TbUsers} from "react-icons/tb";
 import { BeatLoader } from "react-spinners";
-import { deleteBooking } from "../handlers/DeleteBooking";
+import DeleteBookingModal from "../components/modals/DeleteBookingModal";
 
 import * as S from "./MyBookings.Styles";
 import * as CS from "./CommunComponents.Styles";
@@ -104,22 +104,16 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
   <CS.NotFound>You have no upcoming bookings</CS.NotFound>
 )}
     </CS.Container>
+
+    <DeleteBookingModal 
+    modalIsOpen={modalIsOpen} 
+    closeModal={closeModal} 
+    deleteId={deleteId} 
+    setBookings={setBookings} 
+    bookings={bookings}
+/>
     
-    <CS.StyledModal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      contentLabel="Delete Booking Modal"
-      menuOpen={menuOpen}
-    >
-      <CS.ModalContent>
-        <CS.ModalHeader>Delete Booking</CS.ModalHeader>
-        <CS.ModalText>Are you sure you want to delete the booking?</CS.ModalText>
-        <CS.ModalButtonGroup>
-          <CS.CloseModal onClick={closeModal}>Cancel</CS.CloseModal>
-          <CS.ConfirmModal onClick={() => deleteBooking(deleteId, setBookings, bookings, closeModal)}>Delete</CS.ConfirmModal>
-        </CS.ModalButtonGroup>
-      </CS.ModalContent>
-    </CS.StyledModal>
+   
     </>
   );
 }

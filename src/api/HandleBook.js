@@ -1,4 +1,4 @@
-const handleBook = async (startDate, endDate, guests, id) => {
+export const handleBook = async (startDate, endDate, guests, id) => {
   if (!startDate || !endDate || !guests) {
     return { success: false, message: 'Please fill all fields.' };
   }
@@ -30,4 +30,3 @@ const handleBook = async (startDate, endDate, guests, id) => {
   }
 };
 
-export default handleBook;

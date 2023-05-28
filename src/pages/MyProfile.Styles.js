@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { TbSettings } from "react-icons/tb";
 
 export const ProfileCard = styled.div`
-  margin-top: 20px;
+  margin-top: -20px;
   width: 400px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
