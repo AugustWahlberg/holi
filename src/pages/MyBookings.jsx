@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TbBrowserCheck, TbDoorEnter, TbDoorExit, TbUsers} from "react-icons/tb";
 import { BeatLoader } from "react-spinners";
 import DeleteBookingModal from "../components/modals/DeleteBookingModal";
+import fetchBookingData from '../api/FetchBookingData';
 
 import * as S from "./MyBookings.Styles";
 import * as CS from "./CommunComponents.Styles";
@@ -26,33 +27,15 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      const username = localStorage.getItem("username");
-      const token = localStorage.getItem("accessToken");
-      if (!token) {
-        console.log('User not logged in');
-        return;
-      }
-      
-      const response = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${username}/bookings/?_venue=true`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-      });
-      const data = await response.json();
-      console.log('API response:', data);
-      setBookings(data);
-      setLoading(false)
-    };
-    
     const user = localStorage.getItem("username");
     if (user) {
       setUsername(user);
-      fetchData();
+      fetchBookingData(setBookings, setLoading, user);
     } else {
       console.log('No user found in local storage');
     }
   }, [username]);
+
 
   if (loading) {
     return (
@@ -113,7 +96,6 @@ function MyBookings({ menuOpen }) { // accept menuOpen prop here
     bookings={bookings}
 />
     
-   
     </>
   );
 }
