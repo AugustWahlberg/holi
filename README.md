@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Holidaze
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an accommodation booking application built using React. It provides both a customer-facing interface for booking accommodations and an admin interface for managing venues and bookings.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Node.js
+- NPM
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install the dependencies and start the application:
+```
+npm install
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application should be running at [http://localhost:3000](http://localhost:3000).
 
-### `npm test`
+## NPM Scripts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `npm start`: Starts the application in development mode.
+- `npm run build`: Builds the application for production.
+- `npm run test`: Run tests with Jest.
+- `npm run eject`: Removes the single build dependency from the project.
+- `npm run format`: Formats code with Prettier.
 
-### `npm run build`
+## Features and User Guide
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **View Venues**: A user can view a list of Venues. This can be accessed from the Home page, where all venues are listed.
+- **Search Venues**: A user can search for a specific Venue. Use the search bar to find your desired venue.
+- **Venue Details**: A user can view a specific Venue page by id. Click on a venue to see its details and available dates.
+- **Venue Availability**: A user can view a calendar with available dates for a Venue. This feature is integrated into each Venue's detail page.
+- **User Registration**: A user with a stud.noroff.no email may register as a customer or a Venue manager. Use the "Register" option to sign up.
+- **Booking Management**: A registered customer can create and view their upcoming bookings.
+- **Login/Logout**: Registered users can log in and out. Access these features using the "Login" or "Logout" options.
+- **User Avatar**: Registered users can update their avatar. Change your user avatar in your profile settings.
+- **Venue Management**: A registered Venue manager can create, update, and delete a Venue they manage, and view bookings for the Venues they manage. (work in progress)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application uses the Holidaze API as documented in the [Noroff API documentation](https://nf-api.onrender.com/docs/static/index.html). For more information about how to interact with the API, refer to the [API guide](https://docs.noroff.dev/).
