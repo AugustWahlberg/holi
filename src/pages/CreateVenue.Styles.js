@@ -46,6 +46,12 @@ export const StyledInput = styled.input`
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 0.9rem;
+  
+  // Add additional styling for file inputs if needed
+  &[type="file"] {
+    background: #f8f9fa;
+    border: 1px dashed #ced4da;
+  }
 `;
 
 export const FormStep = styled.div`
@@ -97,4 +103,41 @@ export const ButtonGroup = styled.div`
 
 export const Spacer = styled.div`
   flex: 1; // This will push the 'Next' button to the right
+`;
+
+
+export const ToggleGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+`;
+
+export const ToggleLabel = styled.span`
+  flex: 1;
+  // Add other styles as needed
+`;
+
+export const ToggleButtonGroup = styled.div`
+  flex: 1;
+  display: flex;
+`;
+
+
+export const ToggleButton = styled.button`
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: ${props => props.selected ? (props.danger ? '#FF6B6B' : '#28a745') : '#fff'};
+  color: ${props => props.selected ? '#fff' : '#333'};
+  border-radius: 4px;
+  margin-left: 4px;
+  cursor: pointer;
+  &:first-child {
+    margin-left: 0;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  // Add hover effects and other styles as needed
 `;
