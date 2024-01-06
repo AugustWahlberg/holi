@@ -141,3 +141,14 @@ export const ToggleButton = styled.button`
   }
   // Add hover effects and other styles as needed
 `;
+
+export const ErrorMessage = styled.span`
+  color: black;
+  font-size: 0.86rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  display: block;
+  background-color: rgba(189,18,31, 0.16);
+  padding: 4px;
+  padding-left: 10px;
+`
