@@ -152,3 +152,24 @@ export const ErrorMessage = styled.span`
   padding: 4px;
   padding-left: 10px;
 `
+
+export const SuccessMessage = styled.div`
+color: #2e665d;
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px;
+  padding-top: 40px;
+  margin-bottom: 40px;
+  background-color: rgba(175, 219, 208, 0.4);
+  font-size:24px;
+  font-weight: bold; // Thicker font-weight
+`;
+
+export const SuccessMessageNav = styled.nav`
+  font-size: 14px;  // Smaller font size
+  display: block; // Ensure it takes its own line within the parent div
+  padding: 2px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  font-weight: 500;
+`;

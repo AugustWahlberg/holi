@@ -3,6 +3,7 @@ import * as S from "./CreateVenue.Styles";
 import * as CS from "./CommunComponents.Styles";
 
 function CreateVenue({ menuOpen }) {
+  const [showSuccess, setShowSuccess] = useState(false);
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
@@ -25,6 +26,30 @@ function CreateVenue({ menuOpen }) {
       petsAllowed: false,
     },
   });
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      price: "",
+      maxGuests: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      address: "",
+      city: "",
+      zip: "",
+      country: "",
+      mainImage: null,
+      subImages: [],
+      amenities: {
+        wifiIncluded: false,
+        parkingIncluded: false,
+        breakfastIncluded: false,
+        petsAllowed: false,
+      },
+    });
+    setStep(1);
+  };
 
   const validateStep = () => {
     let newErrors = [];
@@ -91,7 +116,17 @@ function CreateVenue({ menuOpen }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validateStep()) setStep(step + 1);
+    if (validateStep()) {
+      if (step === 6) {
+        setShowSuccess(true);
+        setTimeout(() => {
+          setShowSuccess(false);
+          resetForm();
+        }, 4000); // 2 seconds delay
+      } else {
+        setStep(step + 1);
+      }
+    }
   };
 
   const handleBack = () => {
@@ -101,6 +136,10 @@ function CreateVenue({ menuOpen }) {
   return (
     <CS.Container menuOpen={menuOpen}>
       <S.FormWrapper>
+      {showSuccess && <S.SuccessMessage>
+          Submission Successful!
+        <S.SuccessMessageNav>You can manage your venue under "My Venues"</S.SuccessMessageNav>
+        </S.SuccessMessage>}
         <S.FormHeading>Create a venue</S.FormHeading>
         <S.StyledForm onSubmit={handleSubmit}>
 
