@@ -54,7 +54,6 @@ function BookingModal({
       return;
     }
 
-  
     if (guests > maxGuests) {
       // Use the state variable here
       setErrorMessage(`The number of guests cannot exceed ${maxGuests}`);
@@ -70,7 +69,6 @@ function BookingModal({
       }
     });
   };
-
 
   return (
     <MS.StyledModal

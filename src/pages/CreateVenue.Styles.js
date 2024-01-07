@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 import { FaCheckCircle } from "react-icons/fa";
 
-
-
 export const FormWrapper = styled.div`
   width: 340px;
   margin: 0 auto;
@@ -50,7 +48,7 @@ export const StyledInput = styled.input`
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 0.9rem;
-  
+
   // Add additional styling for file inputs if needed
   &[type="file"] {
     background: #f8f9fa;
@@ -64,7 +62,6 @@ export const FormStep = styled.div`
   text-align: center;
   margin-top: 20px;
 `;
-
 
 export const StyledButton = styled.button`
   background-color: #003144;
@@ -96,8 +93,6 @@ export const StyledButton = styled.button`
   }
 `;
 
-
-
 export const StyledTextArea = styled.textarea`
   width: 100%;
   padding: 10px;
@@ -119,7 +114,6 @@ export const Spacer = styled.div`
   flex: 1; // This will push the 'Next' button to the right
 `;
 
-
 export const ToggleGroup = styled.div`
   display: flex;
   align-items: center;
@@ -137,13 +131,13 @@ export const ToggleButtonGroup = styled.div`
   display: flex;
 `;
 
-
 export const ToggleButton = styled.button`
   flex: 1;
   padding: 10px;
   border: 1px solid #ddd;
-  background-color: ${props => props.selected ? (props.danger ? '#FF6B6B' : '#28a745') : '#fff'};
-  color: ${props => props.selected ? '#fff' : '#333'};
+  background-color: ${(props) =>
+    props.selected ? (props.danger ? "#FF6B6B" : "#28a745") : "#fff"};
+  color: ${(props) => (props.selected ? "#fff" : "#333")};
   border-radius: 4px;
   margin-left: 4px;
   cursor: pointer;
@@ -162,15 +156,15 @@ export const ErrorMessage = styled.span`
   margin-top: -5px;
   margin-bottom: 10px;
   display: block;
-  background-color: rgba(189,18,31, 0.16);
+  background-color: rgba(189, 18, 31, 0.16);
   padding: 4px;
   padding-left: 10px;
-`
+`;
 
 export const SuccessMessage = styled.div`
   color: #2e665d;
   text-align: center;
-  padding:10px; 
+  padding: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-bottom: 40px;
@@ -188,17 +182,16 @@ export const SuccessMessageText = styled.div`
 
 export const SuccessMessageNav = styled.nav`
   font-size: 14px;
-  padding-top:10px;
+  padding-top: 10px;
   font-weight: 500;
   padding-left: 20px;
 `;
 
 export const StyledCheckCircle = styled(FaCheckCircle)`
-  color: #4BB543;
+  color: #4bb543;
   font-size: 32px;
   position: absolute;
   top: 10px; // Adjust top margin
   left: 10px; // Adjust left margin
   margin-bottom: -6px;
 `;
-

@@ -10,6 +10,7 @@ This project is an accommodation booking application built using React. It provi
 ## Getting Started
 
 Install the dependencies and start the application:
+
 ```
 npm install
 npm start
@@ -40,12 +41,13 @@ The application should be running at [http://localhost:3000](http://localhost:30
 The application uses the Holidaze API as documented in the [Noroff API documentation](https://nf-api.onrender.com/docs/static/index.html). For more information about how to interact with the API, refer to the [API guide](https://docs.noroff.dev/).
 
 ## Testuser
+
 - Manager:
-Username: luxluxlux8
-Email: luxluxlux8@stud.noroff.no
-Password: luxluxlux8
+  Username: luxluxlux8
+  Email: luxluxlux8@stud.noroff.no
+  Password: luxluxlux8
 
 - User:
-Username: Luxclient8
-Email: luxclient8@stud.noroff.no
-Password: luxclient8
+  Username: Luxclient8
+  Email: luxclient8@stud.noroff.no
+  Password: luxclient8

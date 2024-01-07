@@ -49,7 +49,6 @@ const EditBookingModal = ({
       return;
     }
 
-
     try {
       const token = localStorage.getItem("accessToken");
 
@@ -95,7 +94,6 @@ const EditBookingModal = ({
       setErrorMessage("Failed to update booking. Please try again.");
     }
   };
-
 
   const clearError = () => {
     setErrorMessage("");
