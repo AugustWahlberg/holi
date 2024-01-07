@@ -122,7 +122,7 @@ function CreateVenue({ menuOpen }) {
         setTimeout(() => {
           setShowSuccess(false);
           resetForm();
-        }, 4000); // 2 seconds delay
+        }, 3200); // 2 seconds delay
       } else {
         setStep(step + 1);
       }
@@ -136,10 +136,12 @@ function CreateVenue({ menuOpen }) {
   return (
     <CS.Container menuOpen={menuOpen}>
       <S.FormWrapper>
-      {showSuccess && <S.SuccessMessage>
-          Submission Successful!
-        <S.SuccessMessageNav>You can manage your venue under "My Venues"</S.SuccessMessageNav>
-        </S.SuccessMessage>}
+      {showSuccess && 
+      <S.SuccessMessage>
+      <S.StyledCheckCircle />
+      <S.SuccessMessageText>Your venue was created</S.SuccessMessageText>
+      <S.SuccessMessageNav>You can manage it under "My Venues"</S.SuccessMessageNav>
+    </S.SuccessMessage>}
         <S.FormHeading>Create a venue</S.FormHeading>
         <S.StyledForm onSubmit={handleSubmit}>
 
@@ -358,11 +360,11 @@ function CreateVenue({ menuOpen }) {
   </>
 )}
 
-          <S.ButtonGroup>
-            {step > 1 && <S.StyledButton type="button" onClick={handleBack}>Back</S.StyledButton>}
-            {step === 1 && <S.Spacer />}
-            <S.StyledButton type="submit">{step < 6 ? 'Next' : 'Submit'}</S.StyledButton>
-          </S.ButtonGroup>
+<S.ButtonGroup>
+  {step > 1 && <S.StyledButton type="button" onClick={handleBack} disabled={showSuccess}>Back</S.StyledButton>}
+  {step === 1 && <S.Spacer />}
+  <S.StyledButton type="submit" disabled={showSuccess}>{step < 6 ? 'Next' : 'Submit'}</S.StyledButton>
+</S.ButtonGroup>
         </S.StyledForm>
         <S.FormStep>Step {step} of 6</S.FormStep>
       </S.FormWrapper>

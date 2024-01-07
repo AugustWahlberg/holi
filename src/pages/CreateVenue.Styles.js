@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+import { FaCheckCircle } from "react-icons/fa";
+
+
+
 export const FormWrapper = styled.div`
   width: 340px;
   margin: 0 auto;
@@ -81,7 +85,17 @@ export const StyledButton = styled.button`
       background-color: #bbb;
     }
   }
+
+  &:disabled {
+    opacity: 0.5; // makes button appear faded
+    cursor: not-allowed; // shows a 'no' symbol when you hover
+    background-color: #ccc; // you might want to change the background color to indicate disabled
+    &:hover {
+      background-color: #ccc; // ensure hover state is same as normal state when disabled
+    }
+  }
 `;
+
 
 
 export const StyledTextArea = styled.textarea`
@@ -154,22 +168,37 @@ export const ErrorMessage = styled.span`
 `
 
 export const SuccessMessage = styled.div`
-color: #2e665d;
+  color: #2e665d;
   text-align: center;
-  font-size: 1rem;
-  padding: 10px;
-  padding-top: 40px;
+  padding:10px; 
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-bottom: 40px;
   background-color: rgba(175, 219, 208, 0.4);
-  font-size:24px;
-  font-weight: bold; // Thicker font-weight
+  font-size: 23px;
+  font-weight: 500;
+  position: relative; // For absolute positioning of the check icon
+`;
+
+export const SuccessMessageText = styled.div`
+  font-weight: bold;
+  text-align: center;
+  padding-left: 30px;
 `;
 
 export const SuccessMessageNav = styled.nav`
-  font-size: 14px;  // Smaller font size
-  display: block; // Ensure it takes its own line within the parent div
-  padding: 2px;
-  padding-top: 10px;
-  padding-bottom: 40px;
+  font-size: 14px;
+  padding-top:10px;
   font-weight: 500;
+  padding-left: 20px;
 `;
+
+export const StyledCheckCircle = styled(FaCheckCircle)`
+  color: #4BB543;
+  font-size: 32px;
+  position: absolute;
+  top: 10px; // Adjust top margin
+  left: 10px; // Adjust left margin
+  margin-bottom: -6px;
+`;
+
