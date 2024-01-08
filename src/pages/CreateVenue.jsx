@@ -18,7 +18,7 @@ function CreateVenue({ menuOpen }) {
     zip: "",
     country: "",
     mainImage: null,
-    subImages: [],
+    subImages: [null, null, null, null], // Initialize with four slots
     amenities: {
       wifiIncluded: false,
       parkingIncluded: false,
@@ -40,7 +40,7 @@ function CreateVenue({ menuOpen }) {
       zip: "",
       country: "",
       mainImage: null,
-      subImages: [],
+      subImages: [null, null, null, null],
       amenities: {
         wifiIncluded: false,
         parkingIncluded: false,
@@ -73,7 +73,10 @@ function CreateVenue({ menuOpen }) {
         newErrors.push("Missing fields");
       }
     } else if (step === 6) {
-      // Add your image validation logic here, e.g. check type, ensure they're jpg or png.
+      const filledImages = formData.subImages.filter(Boolean).length; // Count non-null entries
+      if (filledImages < 4) {
+        newErrors.push("At least 4 images are required.");
+      }
     }
     setErrors(newErrors);
     return newErrors.length === 0;
@@ -97,17 +100,21 @@ function CreateVenue({ menuOpen }) {
     }));
   };
 
-  const handleImageChange = (e, main = false) => {
-    if (main) {
-      setFormData((prevData) => ({
-        ...prevData,
-        mainImage: e.target.files[0],
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        subImages: [...prevData.subImages, e.target.files[0]],
-      }));
+  const handleImageChange = (e, index) => {
+    const updatedImages = [...formData.subImages];
+    updatedImages[index] = e.target.files[0];
+    setFormData({
+      ...formData,
+      subImages: updatedImages,
+    });
+  };
+
+  const handleAddImageField = () => {
+    if (formData.subImages.length < 16) {
+      setFormData({
+        ...formData,
+        subImages: [...formData.subImages, null],
+      });
     }
   };
 
@@ -126,7 +133,7 @@ function CreateVenue({ menuOpen }) {
         setTimeout(() => {
           setShowSuccess(false);
           resetForm();
-        }, 3200); // 2 seconds delay
+        }, 4800); // 3.2 seconds delay
       } else {
         setStep(step + 1);
       }
@@ -159,7 +166,7 @@ function CreateVenue({ menuOpen }) {
             </S.ErrorMessage>
           )}
 
-          {step === 1 && (
+{step === 1 && (
             <>
               <S.FormGroup>
                 <S.StyledLabel htmlFor="name">Name</S.StyledLabel>
@@ -413,42 +420,24 @@ function CreateVenue({ menuOpen }) {
 
           {step === 6 && (
             <>
-              <S.FormGroup>
-                <S.StyledLabel htmlFor="mainImage">Main image</S.StyledLabel>
-                <S.StyledInput
-                  type="file"
-                  id="mainImage"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={(e) => handleImageChange(e, true)}
-                />
-              </S.FormGroup>
-              <S.FormGroup>
-                <S.StyledLabel htmlFor="subImage1">Sub 1</S.StyledLabel>
-                <S.StyledInput
-                  type="file"
-                  id="subImage1"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={handleImageChange}
-                />
-              </S.FormGroup>
-              <S.FormGroup>
-                <S.StyledLabel htmlFor="subImage2">Sub 2</S.StyledLabel>
-                <S.StyledInput
-                  type="file"
-                  id="subImage2"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={handleImageChange}
-                />
-              </S.FormGroup>
-              <S.FormGroup>
-                <S.StyledLabel htmlFor="subImage3">Sub 3</S.StyledLabel>
-                <S.StyledInput
-                  type="file"
-                  id="subImage3"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={handleImageChange}
-                />
-              </S.FormGroup>
+              {formData.subImages.map((img, index) => (
+                <S.FormGroup key={index}>
+                  <S.StyledLabel htmlFor={`subImage${index}`}>
+                    Image {index + 1}
+                  </S.StyledLabel>
+                  <S.StyledInput
+                    type="file"
+                    id={`subImage${index}`}
+                    accept=".png, .jpg, .jpeg"
+                    onChange={(e) => handleImageChange(e, index)}
+                  />
+                </S.FormGroup>
+              ))}
+              {formData.subImages.length < 10 && (
+                <S.StyledButton type="button" disabled={showSuccess} onClick={handleAddImageField}>
+                  Add Image
+                </S.StyledButton>
+              )}
             </>
           )}
 

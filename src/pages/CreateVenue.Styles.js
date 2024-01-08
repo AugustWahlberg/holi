@@ -159,6 +159,8 @@ export const ErrorMessage = styled.span`
   background-color: rgba(189, 18, 31, 0.16);
   padding: 4px;
   padding-left: 10px;
+
+
 `;
 
 export const SuccessMessage = styled.div`
