@@ -139,9 +139,13 @@ export const HamburgerButton = styled.button`
   padding-bottom: calc(100vh - 50px);
   display: flex;
   color: rgba(175, 219, 208, 0.8);
-  margin: 10px; // Adjust this according to your needs
+  margin: 10px;
+  margin-top: 0;
   padding-left: 275px;
-  padding-bottom: 0;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  padding-right: 10px;
+  border: 1px solid #003144;
   background-color: #fff;
   color: #003144;
 
