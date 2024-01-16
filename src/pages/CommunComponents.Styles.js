@@ -7,7 +7,7 @@ export const Top = styled.div`
   margin: 0 auto;
   position: fixed;
   z-index: 1;
-  background-color: #fff;
+  background-color: #315867;
   height: auto;
   margin-left: ${(props) => (props.menuOpen ? "130px" : "0px")};
   min-height: 60px;
@@ -49,5 +49,5 @@ export const Header = styled.h2`
   display: flex;
  text-align: center;
  margin: 22px;
- color: #003144;
+ color: white;
 `;
