@@ -9,6 +9,7 @@ export const VenueCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 16px;
   width: 272px; // Adjust the width as needed
+  position: relative; // Add this line
 `;
 
 export const VenueHeader = styled.div`
@@ -32,7 +33,7 @@ export const VenueLocation = styled.p`
 
 export const VenueImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 200px;
   display: block;
 `;
 
@@ -51,9 +52,11 @@ export const GalleryImage = styled.img`
 
 export const VenuePricing = styled.div`
   padding-left: 16px;
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 
 export const VenuePrice = styled.span`
@@ -138,4 +141,48 @@ export const Container = styled.div`
   @media (max-width: 600px) {
     margin-left: 0;
   }
+`;
+export const DeleteIcon = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: rgba(0, 49, 68, 0.9);
+
+  &:hover {
+    color: #cc0000; // Darker red on hover
+  }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Ensure it's above other elements
+`;
+
+export const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+`;
+
+export const ModalHeader = styled.h2`
+  margin: 0;
+`;
+
+export const ModalBody = styled.p`
+  margin: 15px 0;
+`;
+
+export const ModalFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
