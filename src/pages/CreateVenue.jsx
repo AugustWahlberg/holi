@@ -18,7 +18,7 @@ function CreateVenue({ menuOpen }) {
     zip: "",
     country: "",
     mainImage: null,
-    subImages: [null, null, null, null], // Initialize with four slots
+    subImages: [null, null, null, null],
     amenities: {
       wifiIncluded: false,
       parkingIncluded: false,
@@ -53,7 +53,7 @@ function CreateVenue({ menuOpen }) {
 
   const validateStep = () => {
     let newErrors = [];
-    if (step === 1) {
+ if (step === 1) {
       if (!formData.name || !formData.price || !formData.maxGuests) {
         newErrors.push("Missing fields");
       }
@@ -78,6 +78,8 @@ function CreateVenue({ menuOpen }) {
         newErrors.push("At least 4 images are required.");
       }
     }
+
+
     setErrors(newErrors);
     return newErrors.length === 0;
   };
@@ -100,23 +102,22 @@ function CreateVenue({ menuOpen }) {
     }));
   };
 
-  const handleImageChange = (e, index) => {
-    const updatedImages = [...formData.subImages];
-    updatedImages[index] = e.target.files[0];
-    setFormData({
-      ...formData,
-      subImages: updatedImages,
-    });
-  };
+  
+const handleImageChange = (e, index) => {
+  const updatedImages = [...formData.subImages];
+  updatedImages[index] = e.target.value; // Directly use the value from the input
+  setFormData({
+    ...formData,
+    subImages: updatedImages,
+  });
+};
 
-  const handleAddImageField = () => {
-    if (formData.subImages.length < 16) {
-      setFormData({
-        ...formData,
-        subImages: [...formData.subImages, null],
-      });
-    }
-  };
+const handleAddImageField = () => {
+  setFormData({
+    ...formData,
+    subImages: [...formData.subImages, ""], // Initialize new fields with empty string
+  });
+};
 
   const handleDateChange = (field, value) => {
     setFormData((prevFormData) => ({
@@ -125,21 +126,75 @@ function CreateVenue({ menuOpen }) {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateStep()) {
       if (step === 6) {
-        setShowSuccess(true);
-        setTimeout(() => {
-          setShowSuccess(false);
-          resetForm();
-        }, 4800); // 3.2 seconds delay
+        // Assuming formData.subImages now contains URLs
+        const venueData = {
+          name: formData.name,
+          description: formData.description,
+          media: formData.subImages, // Assuming these are now URLs
+          price: parseInt(formData.price),
+          maxGuests: parseInt(formData.maxGuests),
+          meta: {
+            wifi: formData.amenities.wifiIncluded,
+            parking: formData.amenities.parkingIncluded,
+            breakfast: formData.amenities.breakfastIncluded,
+            pets: formData.amenities.petsAllowed,
+          },
+          location: {
+            address: formData.address,
+            city: formData.city,
+            zip: formData.zip,
+            country: formData.country,
+          },
+        };
+  
+        const response = await createVenueAPI(venueData);
+        if (response) {
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+            resetForm();
+          }, 4800);
+        }
       } else {
         setStep(step + 1);
       }
     }
   };
+  
+  
+  const createVenueAPI = async (data) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+  
+      const response = await fetch('https://api.noroff.dev/api/v1/holidaze/venues', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json', // Set content type to application/json
+        },
+        body: JSON.stringify(data) // Send data as JSON string
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API Error Response:', errorData);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error('Error during API call:', error);
+      return null;
+    }
+  };
+  
 
+  
+  
   const handleBack = () => {
     if (step > 1) setStep(step - 1);
   };
@@ -150,14 +205,14 @@ function CreateVenue({ menuOpen }) {
         {showSuccess && (
           <S.SuccessMessage>
             <S.StyledCheckCircle />
-            <S.SuccessMessageText>Your venue was created</S.SuccessMessageText>
+            <S.SuccessMessageText>Your venue was created successfully!</S.SuccessMessageText>
             <S.SuccessMessageNav>
               You can manage it under "My Venues"
             </S.SuccessMessageNav>
           </S.SuccessMessage>
         )}
-        <S.FormHeading>Create a venue</S.FormHeading>
-        <S.StyledForm onSubmit={handleSubmit}>
+        <S.FormHeading>Create a Venue</S.FormHeading>
+         <S.StyledForm onSubmit={handleSubmit}>
           {errors.length > 0 && (
             <S.ErrorMessage>
               {errors.map((error, index) => (
@@ -418,36 +473,33 @@ function CreateVenue({ menuOpen }) {
             </>
           )}
 
-          {step === 6 && (
-            <>
-              {formData.subImages.map((img, index) => (
-                <S.FormGroup key={index}>
-                  <S.StyledLabel htmlFor={`subImage${index}`}>
-                    Image {index + 1}
-                  </S.StyledLabel>
-                  <S.StyledInput
-                    type="file"
-                    id={`subImage${index}`}
-                    accept=".png, .jpg, .jpeg"
-                    onChange={(e) => handleImageChange(e, index)}
-                  />
-                </S.FormGroup>
-              ))}
-              {formData.subImages.length < 10 && (
-                <S.StyledButton type="button" disabled={showSuccess} onClick={handleAddImageField}>
-                  Add Image
-                </S.StyledButton>
-              )}
-            </>
-          )}
+{step === 6 && (
+  <>
+    {formData.subImages.map((url, index) => (
+      <S.FormGroup key={index}>
+        <S.StyledLabel htmlFor={`subImage${index}`}>
+          Image URL {index + 1}
+        </S.StyledLabel>
+        <S.StyledInput
+          type="text"
+          id={`subImage${index}`}
+          placeholder="Enter image URL"
+          value={url}
+          onChange={(e) => handleImageChange(e, index)}
+        />
+      </S.FormGroup>
+    ))}
+    {formData.subImages.length < 10 && (
+      <S.StyledButton type="button" disabled={showSuccess} onClick={handleAddImageField}>
+        Add Image URL
+      </S.StyledButton>
+    )}
+  </>
+)}
 
           <S.ButtonGroup>
             {step > 1 && (
-              <S.StyledButton
-                type="button"
-                onClick={handleBack}
-                disabled={showSuccess}
-              >
+              <S.StyledButton type="button" onClick={handleBack} disabled={showSuccess}>
                 Back
               </S.StyledButton>
             )}
